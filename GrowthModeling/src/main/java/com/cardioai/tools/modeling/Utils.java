@@ -41,7 +41,6 @@ public class Utils {
         headers.append(String.format("%" + cws[14] + "s", "CO2e (g)"));
         headers.append(String.format("%" + cws[15] + "s", "Gross Revenue"));
         headers.append(String.format("%" + cws[16] + "s", "Net Revenue"));
-
         System.out.println(headers.toString());
 
         for (Metrics metric : forecast.getMetrics()) {
