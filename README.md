@@ -1,4 +1,4 @@
-# GrowthModeling
+# The Logistic Growth Model
 The GrowthModeling repository contains a Java utility designed to estimate business growth based on various input conditions. The utility was developed by Group 2 (Cohort 20024) as part of the Professional Certificate Program in Product Management from the Massachusetts Institute of Technology (MIT).
 
 Using the Logistic Growth equation and a density-dependent decline term (also known as the Allee Effects equation), our Team has developed a system of differential equations that allow us to model multiple business-specific and topology-specific metrics such as the number of computing units based on processing requirements, computing cost, storage cost, archive cost, number of storage data IO operations, number of archive data IO operations, storage data IO operations cost, archive data IO operations cost, infrastructure cost, total carbon footprint, carbon footprint by infrastructure tier, gross revenue, net revenue, and per user cost, among other metrics.
@@ -13,17 +13,21 @@ $$\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-dN$$
 
 The Team estimates the monthly computing utilization of CardioAI based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated `g6e.48xlarge` instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
 
-Data storage and archive costs are estimated based on compressed electrocardiographic files of 89 KB in size (*z*) and a bundle containing 345 electrocardiogram files (*h*) for the archive. The model accounts for multiple data storage replicas (*e1*) and archive replicas (*e2*) in addition to estimating the overall cost of data operations (*n1*, *n2*, *n3*) in S3 Standard and S3 Glacier Deep Archive. The carbon footprint is estimated based on publicly available information from different sources and is strictly related to the computing unit (*b1*), storage (*b2*), and archive service used (*b3*), which helps to derive total estimates or more granular estimates by infrastructure tier.
+Data storage and archive costs are estimated based on compressed electrocardiographic files of 89 KB in size (*z*) and a bundle file containing 345 electrocardiogram files (*h*) for archive. The model accounts for multiple data storage replicas (*e1*) and archive replicas (*e2*) in addition to estimating the overall cost of data operations (*n1*, *n2*, *n3*) in S3 Standard and S3 Glacier Deep Archive. The carbon footprint is based on publicly available information from different sources and is strictly related to the estimated monthly emissions of the computing unit (*b1*), storage (*b2*), and archive (*b3*) services used. We are currently modeling a Basic, Standard, and Premium plan at different adoption rates (*j1*, *j2*, *j3*) and rates (*v1*, *v2*, *v3*). However, additional plans can be added at any time should it be necessary.
 
-We are currently modeling a Basic, Standard, and Premium plan at different adoption rates (*j1*, *j2*, *j3*) and rates (*v1*, *v2*, *v3*). However, additional plans can be added at any time without affecting other parts of the system.
+The differential equation to calculate revenue from subscription plans is as follows:
 
-xxx
+<br>
+
+$$\frac{dN}{dt}=Nj_1v_1+Nj_2v_2+Nj_3v_3+Nj_nv_n$$
+
+<br>
 
 The utility has been written to achieve the intended functionality using multiple approaches in the fastest way possible, and does not claim to be either logically or functionally correct. Lastly, the decision to concentrate on Solution Architecture instead of software development as part of the Impact Project has allocated more attention to other areas of concentration.
 
 ## Coefficients
 
-The coefficients below can be adjusted to perform various business growth experiments, including defining multiple rate plans and modeling those simultaneously to analyze profitability under different growth conditions.
+The proposed model has 34 coefficients that can be adjusted to perform various business growth experiments, including defining multiple rate plans and modeling those simultaneously to analyze profitability under different growth conditions.
 
 | No.  | Coefficient | Value         | Description                                                      |
 | ---: | ---:        | :---          | :---                                                             |
@@ -62,28 +66,9 @@ The coefficients below can be adjusted to perform various business growth experi
 | 33.  | month       | 1             | Forecast initial month                                           |
 | 34.  | day         | 1             | Forecast initial day                                             |
 
-xxx
-
-```
-{
-  "K": 3500000,       "r": 0.07,          "d": 0.02,          "t": 180,
-  "p": 111.07,        "u": 0.63,          "m": 2592000,       "f": 2880,
-  "z": 89,            "g": 1048576,       "h": 345,
-  "n1": 3,            "n2": 5,            "n3": 2,
-  "e1": 3,            "e2": 2,
-  "c1": 13857.33,     "c2": 0.023,        "c3": 0.00099,
-  "c4": 0.000005,     "c5": 0.0000004,    "c6": 0.00005,
-  "b1": 2316.083,     "b2": 0.615,        "b3": 0.075,
-  "j1": 0.39,         "j2": 0.34,         "j3": 0.27,
-  "v1": 75.0,         "v2": 35.0,         "v3": 15.0,
-  "year": 2026,       "month": 1,         "day": 1
-}
-```
-**Example 1:** xxxxxxx xxxxxxx
-
 ## Metrics
 
-The model generates the metrics below for each month (t) in the forecast beginning on the indicated date.
+The model generates the metrics below for each month (t) in the forecast beginning on the indicated date. xxx xxx xxx xxx xxx xxx xxx.
 
 | No.  | Metric              | Sample Value | Variable Name             |
 | ---: | :---                | ---:         | :---                      |
@@ -104,16 +89,37 @@ The model generates the metrics below for each month (t) in the forecast beginni
 | 15.  | Gross Revenue       | $45,200.00   | grossRevenue              |
 | 16.  | Net Revenue         | $17,417.95   | netRevenue                |
 
-## The Logistic Growth Model
+## Configuration
 
-The CardioAI Team estimates the monthly computing utilization based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated g6e.48xlarge instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
+The following is a serialized configuration file containing the default values for all coefficients. xxx xxx xxx xxx xxx xxx xxx.
+
+```
+{
+  "K": 3500000,       "r": 0.07,          "d": 0.02,          "t": 180,
+  "p": 111.07,        "u": 0.63,          "m": 2592000,       "f": 2880,
+  "z": 89,            "g": 1048576,       "h": 345,
+  "n1": 3,            "n2": 5,            "n3": 2,
+  "e1": 3,            "e2": 2,
+  "c1": 13857.33,     "c2": 0.023,        "c3": 0.00099,
+  "c4": 0.000005,     "c5": 0.0000004,    "c6": 0.00005,
+  "b1": 2316.083,     "b2": 0.615,        "b3": 0.075,
+  "j1": 0.39,         "j2": 0.34,         "j3": 0.27,
+  "v1": 75.0,         "v2": 35.0,         "v3": 15.0,
+  "year": 2026,       "month": 1,         "day": 1
+}
+```
+**Example 1:** Default configuration file
+
+## Console Output
+
+xxx xxx xxx xxx xxx xxx xxx.
 
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
 **Picture 1:** Sample Console Output.
 
-## Growth Forecasts
+## Forecasts
 
-xxxxx
+xxx xxx xxx xxx xxx xxx xxx.
 
 | No.  | (*K*)   | (*r*) | (*d*) | (*t*) | Forecast |
 | ---: | :---    | :---  | :---  | :---  | :---     |
@@ -123,17 +129,7 @@ xxxxx
 | 4.   | 3500000 | 0.07  | 0.020 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
 | 5.   | 3500000 | 0.17  | 0.030 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
 
-xxx
-
-
-
-
-
-
-
-
-
-
+xxx xxx xxx xxx xxx xxx xxx.
 
 ## The Team
 
