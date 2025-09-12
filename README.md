@@ -50,7 +50,7 @@ The model we are proposing has 34 coefficients that can be adjusted to perform v
 
 ## Metrics
 
-The model generates the metrics below for each month (t) in the forecast beginning on the indicated year, month, and day.
+The model generates the metrics below for each month (t) in the forecast beginning on the indicated date.
 
 | No.  | Metric              | Sample Value | Variable Name             |
 | ---: | :---                | ---:         | :---                      |
