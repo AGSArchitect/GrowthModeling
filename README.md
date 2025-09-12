@@ -97,6 +97,30 @@ The CardioAI Team estimates the monthly computing utilization based on 111.07 se
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
 **Picture 1:** Sample Console Output.
 
+## Growth Forecasts
+
+xxxxx
+
+| No.  | (*K*)   | (*r*) | (*d*) | (*t*) | Forecast |
+| ---: | :---    | :---  | :---  | :---  | :---     |
+| 1.   | 3500000 | 0.05  | 0.013 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.pdf) |
+| 2.   | 3500000 | 0.06  | 0.013 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.pdf) |
+| 3.   | 3500000 | 0.07  | 0.015 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.pdf) |
+| 4.   | 3500000 | 0.07  | 0.020 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
+| 5.   | 3500000 | 0.17  | 0.030 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
+
+xxx
+
+
+
+
+
+
+
+
+
+
+
 ## The Team
 
 The team members of the CardioAI Impact Project are listed below in alphabetical order:
