@@ -3,17 +3,23 @@ The GrowthModeling repository contains a Java utility designed to estimate busin
 
 Using the Logistic Growth equation and a density-dependent decline term (also known as the Allee Effects equation), our Team has developed a system of differential equations that allow us to model multiple business-specific and topology-specific metrics such as the number of computing units based on processing requirements, computing cost, storage cost, archive cost, number of storage data IO operations, number of archive data IO operations, storage data IO operations cost, archive data IO operations cost, infrastructure cost, total carbon footprint, carbon footprint by infrastructure tier, gross revenue, net revenue, and per user cost, among other metrics.
 
-The main differential equations are as follows:
+The main differential equation is as follows:
+
+<br>
 
 $$\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-dN$$
-
-$$\frac{dN}{dt}=\left(\frac{Np_s\left(\left(1-u\right)+1\right)}{m_s}\ast c_{1/unit}\right)+e_1\left(\frac{Nfz_{KB}}{g_{KB}}\ast c_{2/GB}\right)+e_2\left(\frac{Nfz_{KB}}{g_{KB}}\ast c_{3/GB}\right)+n_1\left(Nfc_{4/put}\right)+n_2\left(Nfc_{5/get}\right)+n_3\left(\frac{Nf}{h}\ast c_{6/put}\right)$$
-
-$$\frac{dN}{dt}=\left(\frac{Np_s\left(\left(1-u\right)+1\right)}{m_s}\ast b_{1gCO2e/AMI-month}\right)+e_1\left(\frac{Nfz_{KB}}{g_{KB}}\ast b_{2gCO2e/GB-month}\right)+e_2\left(\frac{Nfz_{KB}}{g_{KB}}\ast b_{3gCO2e/GB-month}\right)$$
 
 <br>
 
 The CardioAI Team estimates the monthly computing utilization based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated `g6e.48xlarge` instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
+
+
+
+
+
+
+
+
 
 xxx
 
