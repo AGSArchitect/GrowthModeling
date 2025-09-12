@@ -48,6 +48,25 @@ The model we are proposing has 34 coefficients that can be adjusted to perform v
 | 33.  | month       | 1             | Forecast initial month                                           |
 | 34.  | day         | 1             | Forecast initial day                                             |
 
+xxx
+
+```
+{
+  "K": 3500000,       "r": 0.07,          "d": 0.02,          "t": 180,
+  "p": 111.07,        "u": 0.63,          "m": 2592000,       "f": 2880,
+  "z": 89,            "g": 1048576,       "h": 345,
+  "n1": 3,            "n2": 5,            "n3": 2,
+  "e1": 3,            "e2": 2,
+  "c1": 13857.33,     "c2": 0.023,        "c3": 0.00099,
+  "c4": 0.000005,     "c5": 0.0000004,    "c6": 0.00005,
+  "b1": 2316.083,     "b2": 0.615,        "b3": 0.075,
+  "j1": 0.39,         "j2": 0.34,         "j3": 0.27,
+  "v1": 75.0,         "v2": 35.0,         "v3": 15.0,
+  "year": 2026,       "month": 1,         "day": 1
+}
+```
+**Example 1:** xxxxxxx xxxxxxx
+
 ## Metrics
 
 The model generates the metrics below for each month (t) in the forecast beginning on the indicated date.
@@ -73,10 +92,34 @@ The model generates the metrics below for each month (t) in the forecast beginni
 
 ## The Logistic Growth Model
 
-The CardioAI Team estimates the monthly computing utilization based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (p) and AI inference, with a maximum computing unit utilization rate (u) of 63%. The estimations are directly associated with AWS's high-performance, GPU-accelerated Amazon EC2 g6e.48xlarge instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
+The CardioAI Team estimates the monthly computing utilization based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated g6e.48xlarge instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
 
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
 **Picture 1:** Sample Console Output.
+
+## Growth Forecasts
+
+xxxxx
+
+| No.  | (*K*)   | (*r*) | (*d*) | (*t*) | Forecast |
+| ---: | :---    | :---  | :---  | :---  | :---     |
+| 1.   | 3500000 | 0.05  | 0.013 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.pdf) |
+| 2.   | 3500000 | 0.06  | 0.013 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.pdf) |
+| 3.   | 3500000 | 0.07  | 0.015 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.pdf) |
+| 4.   | 3500000 | 0.07  | 0.020 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
+| 5.   | 3500000 | 0.17  | 0.030 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
+
+xxx
+
+
+
+
+
+
+
+
+
+
 
 ## The Team
 
