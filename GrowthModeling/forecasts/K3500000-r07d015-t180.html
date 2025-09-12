@@ -1,0 +1,3488 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logistic Growth Model</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body class="p-5">
+    <a href="#offcanvasCoeficients" aria-controls="offcanvasCoeficients" data-bs-toggle="offcanvas"><img src="https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/mit-logo.png" width="315" border="0"></a>
+    <p>
+      <b>Professional Certificate Program in Product Management</b><br>
+      <font color="#750014"><b>Massachusetts Institute of Technology</b></font><br>
+      December 2024<br><br>
+      <b>CardioAI</b><br>
+      B2B2C Medical Hardware and Software Platform Impact Project - Group 2<br>
+      Author: Ariel Gonzalez
+    </p>
+
+    <h3>Logistic Growth Model</h3>
+    <p style="text-align: justify">
+      Using the Logistic Growth equation and a density-dependent decline term (also known as the Allee Effects equation), our Team has developed a system of seven differential equations that allow us to model multiple business-specific and topology-specific metrics such as the number of computing units based on processing requirements, computing cost, storage cost, archive cost, number of storage data IO operations, number of archive data IO operations, storage data IO operations cost, archive data IO operations cost, infrastructure cost, total carbon footprint, carbon footprint by infrastructure tier, gross revenue, net revenue, and cost per platform user, among other metrics. In addition, our model has 34 different coefficients that can be adjusted to perform various business growth experiments, including defining multiple rate plans and modeling those simultaneously to analyze profitability under different growth rates. The results below were derived using 3.5 million users as the carrying capacity (<i>K</i>), an initial pool of 1000 customers (<i>N</i>), a 7% intrinsic growth rate (<i>r</i>), a 1.5% intrinsic decline rate (<i>d</i>), and a time projection of 15 years. We also modeled a Premium, Standard, and Basic plan with costs of $75.00, $35.00, and $15.00, respectively. To review the system of differential equations and the complete list of coefficients, please refer to the document: Logistic Growth Model - R5.
+    </p>
+
+    <br>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col" class="text-end">Customers</th>
+          <th scope="col" class="text-end">Delta</th>
+          <th scope="col" class="text-end">Units</th>
+          <th scope="col" class="text-end">Units Cost</th>
+          <th scope="col" class="text-end">Storage Size (GB)</th>
+          <th scope="col" class="text-end">Archive Size (GB)</th>
+          <th scope="col" class="text-end">Storage Cost</th>
+          <th scope="col" class="text-end">Archive Cost</th>
+          <th scope="col" class="text-end">Storage IO Cost</th>
+          <th scope="col" class="text-end">Archive IO Cost</th>
+          <th scope="col" class="text-end">Infrastructure Cost</th>
+          <th scope="col" class="text-end">Per User Cost</th>
+          <th scope="col" class="text-end">CO<sub>2</sub>e (g)</th>
+          <th scope="col" class="text-end">Gross Revenue </th>
+          <th scope="col" class="text-end">Net Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>2026-01-01</td>
+          <td class="text-end">1000</td>
+          <td class="text-end">55</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">733.34</td>
+          <td class="text-end">488.89</td>
+          <td class="text-end">$16.87</td>
+          <td class="text-end">$0.73</td>
+          <td class="text-end">$48.96</td>
+          <td class="text-end">$0.83</td>
+          <td class="text-end">$27,782.05</td>
+          <td class="text-end">$27.78</td>
+          <td class="text-end">5,119.84</td>
+          <td class="text-end">$45,200.00</td>
+          <td class="text-end">$17,417.95</td>
+        </tr>
+        <tr>
+          <td>2026-02-01</td>
+          <td class="text-end">1055</td>
+          <td class="text-end">58</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">773.67</td>
+          <td class="text-end">515.78</td>
+          <td class="text-end">$17.79</td>
+          <td class="text-end">$0.77</td>
+          <td class="text-end">$51.65</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">$27,785.75</td>
+          <td class="text-end">$26.34</td>
+          <td class="text-end">5,146.66</td>
+          <td class="text-end">$47,686.00</td>
+          <td class="text-end">$19,900.25</td>
+        </tr>
+        <tr>
+          <td>2026-03-01</td>
+          <td class="text-end">1113</td>
+          <td class="text-end">61</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">816.20</td>
+          <td class="text-end">544.14</td>
+          <td class="text-end">$18.77</td>
+          <td class="text-end">$0.81</td>
+          <td class="text-end">$54.49</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">$27,789.66</td>
+          <td class="text-end">$24.97</td>
+          <td class="text-end">5,174.94</td>
+          <td class="text-end">$50,307.60</td>
+          <td class="text-end">$22,517.94</td>
+        </tr>
+        <tr>
+          <td>2026-04-01</td>
+          <td class="text-end">1174</td>
+          <td class="text-end">64</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">860.94</td>
+          <td class="text-end">573.96</td>
+          <td class="text-end">$19.80</td>
+          <td class="text-end">$0.85</td>
+          <td class="text-end">$57.48</td>
+          <td class="text-end">$0.98</td>
+          <td class="text-end">$27,793.77</td>
+          <td class="text-end">$23.67</td>
+          <td class="text-end">5,204.69</td>
+          <td class="text-end">$53,064.80</td>
+          <td class="text-end">$25,271.03</td>
+        </tr>
+        <tr>
+          <td>2026-05-01</td>
+          <td class="text-end">1238</td>
+          <td class="text-end">68</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">907.87</td>
+          <td class="text-end">605.25</td>
+          <td class="text-end">$20.88</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">$60.61</td>
+          <td class="text-end">$1.03</td>
+          <td class="text-end">$27,798.09</td>
+          <td class="text-end">$22.45</td>
+          <td class="text-end">5,235.90</td>
+          <td class="text-end">$55,957.60</td>
+          <td class="text-end">$28,159.51</td>
+        </tr>
+        <tr>
+          <td>2026-06-01</td>
+          <td class="text-end">1306</td>
+          <td class="text-end">71</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">957.74</td>
+          <td class="text-end">638.49</td>
+          <td class="text-end">$22.03</td>
+          <td class="text-end">$0.95</td>
+          <td class="text-end">$63.94</td>
+          <td class="text-end">$1.09</td>
+          <td class="text-end">$27,802.67</td>
+          <td class="text-end">$21.29</td>
+          <td class="text-end">5,269.06</td>
+          <td class="text-end">$59,031.20</td>
+          <td class="text-end">$31,228.53</td>
+        </tr>
+        <tr>
+          <td>2026-07-01</td>
+          <td class="text-end">1377</td>
+          <td class="text-end">75</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,009.81</td>
+          <td class="text-end">673.20</td>
+          <td class="text-end">$23.23</td>
+          <td class="text-end">$1.00</td>
+          <td class="text-end">$67.42</td>
+          <td class="text-end">$1.15</td>
+          <td class="text-end">$27,807.45</td>
+          <td class="text-end">$20.19</td>
+          <td class="text-end">5,303.69</td>
+          <td class="text-end">$62,240.40</td>
+          <td class="text-end">$34,432.95</td>
+        </tr>
+        <tr>
+          <td>2026-08-01</td>
+          <td class="text-end">1452</td>
+          <td class="text-end">79</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,064.81</td>
+          <td class="text-end">709.87</td>
+          <td class="text-end">$24.49</td>
+          <td class="text-end">$1.05</td>
+          <td class="text-end">$71.09</td>
+          <td class="text-end">$1.21</td>
+          <td class="text-end">$27,812.51</td>
+          <td class="text-end">$19.15</td>
+          <td class="text-end">5,340.26</td>
+          <td class="text-end">$65,630.40</td>
+          <td class="text-end">$37,817.89</td>
+        </tr>
+        <tr>
+          <td>2026-09-01</td>
+          <td class="text-end">1531</td>
+          <td class="text-end">84</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,122.74</td>
+          <td class="text-end">748.49</td>
+          <td class="text-end">$25.82</td>
+          <td class="text-end">$1.11</td>
+          <td class="text-end">$74.96</td>
+          <td class="text-end">$1.28</td>
+          <td class="text-end">$27,817.83</td>
+          <td class="text-end">$18.17</td>
+          <td class="text-end">5,378.79</td>
+          <td class="text-end">$69,201.20</td>
+          <td class="text-end">$41,383.37</td>
+        </tr>
+        <tr>
+          <td>2026-10-01</td>
+          <td class="text-end">1615</td>
+          <td class="text-end">88</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,184.34</td>
+          <td class="text-end">789.56</td>
+          <td class="text-end">$27.24</td>
+          <td class="text-end">$1.17</td>
+          <td class="text-end">$79.07</td>
+          <td class="text-end">$1.35</td>
+          <td class="text-end">$27,823.49</td>
+          <td class="text-end">$17.23</td>
+          <td class="text-end">5,419.75</td>
+          <td class="text-end">$72,998.00</td>
+          <td class="text-end">$45,174.51</td>
+        </tr>
+        <tr>
+          <td>2026-11-01</td>
+          <td class="text-end">1703</td>
+          <td class="text-end">93</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,248.87</td>
+          <td class="text-end">832.58</td>
+          <td class="text-end">$28.72</td>
+          <td class="text-end">$1.24</td>
+          <td class="text-end">$83.38</td>
+          <td class="text-end">$1.42</td>
+          <td class="text-end">$27,829.42</td>
+          <td class="text-end">$16.34</td>
+          <td class="text-end">5,462.67</td>
+          <td class="text-end">$76,975.60</td>
+          <td class="text-end">$49,146.18</td>
+        </tr>
+        <tr>
+          <td>2026-12-01</td>
+          <td class="text-end">1796</td>
+          <td class="text-end">98</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,317.07</td>
+          <td class="text-end">878.05</td>
+          <td class="text-end">$30.29</td>
+          <td class="text-end">$1.30</td>
+          <td class="text-end">$87.93</td>
+          <td class="text-end">$1.50</td>
+          <td class="text-end">$27,835.69</td>
+          <td class="text-end">$15.50</td>
+          <td class="text-end">5,508.02</td>
+          <td class="text-end">$81,179.20</td>
+          <td class="text-end">$53,343.51</td>
+        </tr>
+        <tr>
+          <td>2027-01-01</td>
+          <td class="text-end">1894</td>
+          <td class="text-end">104</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,388.94</td>
+          <td class="text-end">925.96</td>
+          <td class="text-end">$31.95</td>
+          <td class="text-end">$1.38</td>
+          <td class="text-end">$92.73</td>
+          <td class="text-end">$1.58</td>
+          <td class="text-end">$27,842.29</td>
+          <td class="text-end">$14.70</td>
+          <td class="text-end">5,555.81</td>
+          <td class="text-end">$85,608.80</td>
+          <td class="text-end">$57,766.51</td>
+        </tr>
+        <tr>
+          <td>2027-02-01</td>
+          <td class="text-end">1998</td>
+          <td class="text-end">109</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,465.21</td>
+          <td class="text-end">976.81</td>
+          <td class="text-end">$33.70</td>
+          <td class="text-end">$1.45</td>
+          <td class="text-end">$97.82</td>
+          <td class="text-end">$1.67</td>
+          <td class="text-end">$27,849.30</td>
+          <td class="text-end">$13.94</td>
+          <td class="text-end">5,606.53</td>
+          <td class="text-end">$90,309.60</td>
+          <td class="text-end">$62,460.30</td>
+        </tr>
+        <tr>
+          <td>2027-03-01</td>
+          <td class="text-end">2107</td>
+          <td class="text-end">115</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,545.14</td>
+          <td class="text-end">1,030.09</td>
+          <td class="text-end">$35.54</td>
+          <td class="text-end">$1.53</td>
+          <td class="text-end">$103.16</td>
+          <td class="text-end">$1.76</td>
+          <td class="text-end">$27,856.65</td>
+          <td class="text-end">$13.22</td>
+          <td class="text-end">5,659.69</td>
+          <td class="text-end">$95,236.40</td>
+          <td class="text-end">$67,379.75</td>
+        </tr>
+        <tr>
+          <td>2027-04-01</td>
+          <td class="text-end">2222</td>
+          <td class="text-end">122</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,629.48</td>
+          <td class="text-end">1,086.32</td>
+          <td class="text-end">$37.48</td>
+          <td class="text-end">$1.61</td>
+          <td class="text-end">$108.79</td>
+          <td class="text-end">$1.85</td>
+          <td class="text-end">$27,864.40</td>
+          <td class="text-end">$12.54</td>
+          <td class="text-end">5,715.77</td>
+          <td class="text-end">$100,434.40</td>
+          <td class="text-end">$72,570.00</td>
+        </tr>
+        <tr>
+          <td>2027-05-01</td>
+          <td class="text-end">2344</td>
+          <td class="text-end">128</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,718.94</td>
+          <td class="text-end">1,145.96</td>
+          <td class="text-end">$39.54</td>
+          <td class="text-end">$1.70</td>
+          <td class="text-end">$114.76</td>
+          <td class="text-end">$1.96</td>
+          <td class="text-end">$27,872.62</td>
+          <td class="text-end">$11.89</td>
+          <td class="text-end">5,775.26</td>
+          <td class="text-end">$105,948.80</td>
+          <td class="text-end">$78,076.18</td>
+        </tr>
+        <tr>
+          <td>2027-06-01</td>
+          <td class="text-end">2472</td>
+          <td class="text-end">135</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,812.81</td>
+          <td class="text-end">1,208.54</td>
+          <td class="text-end">$41.69</td>
+          <td class="text-end">$1.79</td>
+          <td class="text-end">$121.03</td>
+          <td class="text-end">$2.06</td>
+          <td class="text-end">$27,881.24</td>
+          <td class="text-end">$11.28</td>
+          <td class="text-end">5,837.68</td>
+          <td class="text-end">$111,734.40</td>
+          <td class="text-end">$83,853.16</td>
+        </tr>
+        <tr>
+          <td>2027-07-01</td>
+          <td class="text-end">2607</td>
+          <td class="text-end">143</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">1,911.81</td>
+          <td class="text-end">1,274.54</td>
+          <td class="text-end">$43.97</td>
+          <td class="text-end">$1.89</td>
+          <td class="text-end">$127.64</td>
+          <td class="text-end">$2.18</td>
+          <td class="text-end">$27,890.34</td>
+          <td class="text-end">$10.70</td>
+          <td class="text-end">5,903.52</td>
+          <td class="text-end">$117,836.40</td>
+          <td class="text-end">$89,946.06</td>
+        </tr>
+        <tr>
+          <td>2027-08-01</td>
+          <td class="text-end">2750</td>
+          <td class="text-end">151</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,016.68</td>
+          <td class="text-end">1,344.45</td>
+          <td class="text-end">$46.38</td>
+          <td class="text-end">$2.00</td>
+          <td class="text-end">$134.64</td>
+          <td class="text-end">$2.30</td>
+          <td class="text-end">$27,899.98</td>
+          <td class="text-end">$10.15</td>
+          <td class="text-end">5,973.26</td>
+          <td class="text-end">$124,300.00</td>
+          <td class="text-end">$96,400.02</td>
+        </tr>
+        <tr>
+          <td>2027-09-01</td>
+          <td class="text-end">2901</td>
+          <td class="text-end">159</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,127.41</td>
+          <td class="text-end">1,418.27</td>
+          <td class="text-end">$48.93</td>
+          <td class="text-end">$2.11</td>
+          <td class="text-end">$142.03</td>
+          <td class="text-end">$2.42</td>
+          <td class="text-end">$27,910.15</td>
+          <td class="text-end">$9.62</td>
+          <td class="text-end">6,046.89</td>
+          <td class="text-end">$131,125.20</td>
+          <td class="text-end">$103,215.05</td>
+        </tr>
+        <tr>
+          <td>2027-10-01</td>
+          <td class="text-end">3060</td>
+          <td class="text-end">168</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,244.01</td>
+          <td class="text-end">1,496.01</td>
+          <td class="text-end">$51.61</td>
+          <td class="text-end">$2.22</td>
+          <td class="text-end">$149.82</td>
+          <td class="text-end">$2.55</td>
+          <td class="text-end">$27,920.87</td>
+          <td class="text-end">$9.12</td>
+          <td class="text-end">6,124.43</td>
+          <td class="text-end">$138,312.00</td>
+          <td class="text-end">$110,391.13</td>
+        </tr>
+        <tr>
+          <td>2027-11-01</td>
+          <td class="text-end">3228</td>
+          <td class="text-end">177</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,367.21</td>
+          <td class="text-end">1,578.14</td>
+          <td class="text-end">$54.45</td>
+          <td class="text-end">$2.34</td>
+          <td class="text-end">$158.04</td>
+          <td class="text-end">$2.69</td>
+          <td class="text-end">$27,932.19</td>
+          <td class="text-end">$8.65</td>
+          <td class="text-end">6,206.36</td>
+          <td class="text-end">$145,905.60</td>
+          <td class="text-end">$117,973.41</td>
+        </tr>
+        <tr>
+          <td>2027-12-01</td>
+          <td class="text-end">3405</td>
+          <td class="text-end">187</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,497.01</td>
+          <td class="text-end">1,664.68</td>
+          <td class="text-end">$57.43</td>
+          <td class="text-end">$2.47</td>
+          <td class="text-end">$166.71</td>
+          <td class="text-end">$2.84</td>
+          <td class="text-end">$27,944.11</td>
+          <td class="text-end">$8.21</td>
+          <td class="text-end">6,292.68</td>
+          <td class="text-end">$153,906.00</td>
+          <td class="text-end">$125,961.89</td>
+        </tr>
+        <tr>
+          <td>2028-01-01</td>
+          <td class="text-end">3592</td>
+          <td class="text-end">197</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,634.15</td>
+          <td class="text-end">1,756.10</td>
+          <td class="text-end">$60.59</td>
+          <td class="text-end">$2.61</td>
+          <td class="text-end">$175.86</td>
+          <td class="text-end">$3.00</td>
+          <td class="text-end">$27,956.72</td>
+          <td class="text-end">$7.78</td>
+          <td class="text-end">6,383.87</td>
+          <td class="text-end">$162,358.40</td>
+          <td class="text-end">$134,401.68</td>
+        </tr>
+        <tr>
+          <td>2028-02-01</td>
+          <td class="text-end">3789</td>
+          <td class="text-end">208</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,778.62</td>
+          <td class="text-end">1,852.41</td>
+          <td class="text-end">$63.91</td>
+          <td class="text-end">$2.75</td>
+          <td class="text-end">$185.51</td>
+          <td class="text-end">$3.16</td>
+          <td class="text-end">$27,969.99</td>
+          <td class="text-end">$7.38</td>
+          <td class="text-end">6,479.95</td>
+          <td class="text-end">$171,262.80</td>
+          <td class="text-end">$143,292.81</td>
+        </tr>
+        <tr>
+          <td>2028-03-01</td>
+          <td class="text-end">3997</td>
+          <td class="text-end">219</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">2,931.15</td>
+          <td class="text-end">1,954.10</td>
+          <td class="text-end">$67.42</td>
+          <td class="text-end">$2.90</td>
+          <td class="text-end">$195.69</td>
+          <td class="text-end">$3.34</td>
+          <td class="text-end">$27,984.01</td>
+          <td class="text-end">$7.00</td>
+          <td class="text-end">6,581.38</td>
+          <td class="text-end">$180,664.40</td>
+          <td class="text-end">$152,680.39</td>
+        </tr>
+        <tr>
+          <td>2028-04-01</td>
+          <td class="text-end">4216</td>
+          <td class="text-end">231</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">3,091.75</td>
+          <td class="text-end">2,061.17</td>
+          <td class="text-end">$71.11</td>
+          <td class="text-end">$3.06</td>
+          <td class="text-end">$206.42</td>
+          <td class="text-end">$3.52</td>
+          <td class="text-end">$27,998.77</td>
+          <td class="text-end">$6.64</td>
+          <td class="text-end">6,688.18</td>
+          <td class="text-end">$190,563.20</td>
+          <td class="text-end">$162,564.43</td>
+        </tr>
+        <tr>
+          <td>2028-05-01</td>
+          <td class="text-end">4447</td>
+          <td class="text-end">244</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">3,261.15</td>
+          <td class="text-end">2,174.10</td>
+          <td class="text-end">$75.01</td>
+          <td class="text-end">$3.23</td>
+          <td class="text-end">$217.73</td>
+          <td class="text-end">$3.71</td>
+          <td class="text-end">$28,014.33</td>
+          <td class="text-end">$6.30</td>
+          <td class="text-end">6,800.83</td>
+          <td class="text-end">$201,004.40</td>
+          <td class="text-end">$172,990.07</td>
+        </tr>
+        <tr>
+          <td>2028-06-01</td>
+          <td class="text-end">4691</td>
+          <td class="text-end">258</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">3,440.09</td>
+          <td class="text-end">2,293.39</td>
+          <td class="text-end">$79.12</td>
+          <td class="text-end">$3.41</td>
+          <td class="text-end">$229.67</td>
+          <td class="text-end">$3.92</td>
+          <td class="text-end">$28,030.77</td>
+          <td class="text-end">$5.98</td>
+          <td class="text-end">6,919.82</td>
+          <td class="text-end">$212,033.20</td>
+          <td class="text-end">$184,002.43</td>
+        </tr>
+        <tr>
+          <td>2028-07-01</td>
+          <td class="text-end">4949</td>
+          <td class="text-end">272</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">3,629.29</td>
+          <td class="text-end">2,419.52</td>
+          <td class="text-end">$83.47</td>
+          <td class="text-end">$3.59</td>
+          <td class="text-end">$242.30</td>
+          <td class="text-end">$4.13</td>
+          <td class="text-end">$28,048.16</td>
+          <td class="text-end">$5.67</td>
+          <td class="text-end">7,045.64</td>
+          <td class="text-end">$223,694.80</td>
+          <td class="text-end">$195,646.64</td>
+        </tr>
+        <tr>
+          <td>2028-08-01</td>
+          <td class="text-end">5221</td>
+          <td class="text-end">287</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">3,828.75</td>
+          <td class="text-end">2,552.50</td>
+          <td class="text-end">$88.06</td>
+          <td class="text-end">$3.79</td>
+          <td class="text-end">$255.62</td>
+          <td class="text-end">$4.36</td>
+          <td class="text-end">$28,066.49</td>
+          <td class="text-end">$5.38</td>
+          <td class="text-end">7,178.29</td>
+          <td class="text-end">$235,989.20</td>
+          <td class="text-end">$207,922.71</td>
+        </tr>
+        <tr>
+          <td>2028-09-01</td>
+          <td class="text-end">5508</td>
+          <td class="text-end">302</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">4,039.22</td>
+          <td class="text-end">2,692.81</td>
+          <td class="text-end">$92.90</td>
+          <td class="text-end">$4.00</td>
+          <td class="text-end">$269.67</td>
+          <td class="text-end">$4.60</td>
+          <td class="text-end">$28,085.83</td>
+          <td class="text-end">$5.10</td>
+          <td class="text-end">7,318.25</td>
+          <td class="text-end">$248,961.60</td>
+          <td class="text-end">$220,875.77</td>
+        </tr>
+        <tr>
+          <td>2028-10-01</td>
+          <td class="text-end">5810</td>
+          <td class="text-end">319</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">4,260.69</td>
+          <td class="text-end">2,840.46</td>
+          <td class="text-end">$98.00</td>
+          <td class="text-end">$4.22</td>
+          <td class="text-end">$284.46</td>
+          <td class="text-end">$4.85</td>
+          <td class="text-end">$28,106.18</td>
+          <td class="text-end">$4.84</td>
+          <td class="text-end">7,465.53</td>
+          <td class="text-end">$262,612.00</td>
+          <td class="text-end">$234,505.82</td>
+        </tr>
+        <tr>
+          <td>2028-11-01</td>
+          <td class="text-end">6129</td>
+          <td class="text-end">337</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">4,494.62</td>
+          <td class="text-end">2,996.42</td>
+          <td class="text-end">$103.38</td>
+          <td class="text-end">$4.45</td>
+          <td class="text-end">$300.08</td>
+          <td class="text-end">$5.12</td>
+          <td class="text-end">$28,127.68</td>
+          <td class="text-end">$4.59</td>
+          <td class="text-end">7,621.09</td>
+          <td class="text-end">$277,030.80</td>
+          <td class="text-end">$248,903.12</td>
+        </tr>
+        <tr>
+          <td>2028-12-01</td>
+          <td class="text-end">6466</td>
+          <td class="text-end">355</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">4,741.76</td>
+          <td class="text-end">3,161.17</td>
+          <td class="text-end">$109.06</td>
+          <td class="text-end">$4.69</td>
+          <td class="text-end">$316.58</td>
+          <td class="text-end">$5.40</td>
+          <td class="text-end">$28,150.39</td>
+          <td class="text-end">$4.35</td>
+          <td class="text-end">7,785.44</td>
+          <td class="text-end">$292,263.20</td>
+          <td class="text-end">$264,112.81</td>
+        </tr>
+        <tr>
+          <td>2029-01-01</td>
+          <td class="text-end">6821</td>
+          <td class="text-end">375</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">5,002.09</td>
+          <td class="text-end">3,334.73</td>
+          <td class="text-end">$115.05</td>
+          <td class="text-end">$4.95</td>
+          <td class="text-end">$333.96</td>
+          <td class="text-end">$5.69</td>
+          <td class="text-end">$28,174.31</td>
+          <td class="text-end">$4.13</td>
+          <td class="text-end">7,958.56</td>
+          <td class="text-end">$308,309.20</td>
+          <td class="text-end">$280,134.89</td>
+        </tr>
+        <tr>
+          <td>2029-02-01</td>
+          <td class="text-end">7196</td>
+          <td class="text-end">395</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">5,277.10</td>
+          <td class="text-end">3,518.06</td>
+          <td class="text-end">$121.37</td>
+          <td class="text-end">$5.22</td>
+          <td class="text-end">$352.32</td>
+          <td class="text-end">$6.01</td>
+          <td class="text-end">$28,199.58</td>
+          <td class="text-end">$3.92</td>
+          <td class="text-end">8,141.43</td>
+          <td class="text-end">$325,259.20</td>
+          <td class="text-end">$297,059.62</td>
+        </tr>
+        <tr>
+          <td>2029-03-01</td>
+          <td class="text-end">7591</td>
+          <td class="text-end">417</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">5,566.76</td>
+          <td class="text-end">3,711.18</td>
+          <td class="text-end">$128.04</td>
+          <td class="text-end">$5.51</td>
+          <td class="text-end">$371.66</td>
+          <td class="text-end">$6.34</td>
+          <td class="text-end">$28,226.20</td>
+          <td class="text-end">$3.72</td>
+          <td class="text-end">8,334.06</td>
+          <td class="text-end">$343,113.20</td>
+          <td class="text-end">$314,887.00</td>
+        </tr>
+        <tr>
+          <td>2029-04-01</td>
+          <td class="text-end">8008</td>
+          <td class="text-end">440</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">5,872.57</td>
+          <td class="text-end">3,915.04</td>
+          <td class="text-end">$135.07</td>
+          <td class="text-end">$5.81</td>
+          <td class="text-end">$392.07</td>
+          <td class="text-end">$6.68</td>
+          <td class="text-end">$28,254.30</td>
+          <td class="text-end">$3.53</td>
+          <td class="text-end">8,537.42</td>
+          <td class="text-end">$361,961.60</td>
+          <td class="text-end">$333,707.30</td>
+        </tr>
+        <tr>
+          <td>2029-05-01</td>
+          <td class="text-end">8448</td>
+          <td class="text-end">464</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">6,195.23</td>
+          <td class="text-end">4,130.16</td>
+          <td class="text-end">$142.49</td>
+          <td class="text-end">$6.13</td>
+          <td class="text-end">$413.61</td>
+          <td class="text-end">$7.05</td>
+          <td class="text-end">$28,283.95</td>
+          <td class="text-end">$3.35</td>
+          <td class="text-end">8,752.00</td>
+          <td class="text-end">$381,849.60</td>
+          <td class="text-end">$353,565.65</td>
+        </tr>
+        <tr>
+          <td>2029-06-01</td>
+          <td class="text-end">8912</td>
+          <td class="text-end">490</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">6,535.50</td>
+          <td class="text-end">4,357.00</td>
+          <td class="text-end">$150.32</td>
+          <td class="text-end">$6.47</td>
+          <td class="text-end">$436.33</td>
+          <td class="text-end">$7.44</td>
+          <td class="text-end">$28,315.22</td>
+          <td class="text-end">$3.18</td>
+          <td class="text-end">8,978.28</td>
+          <td class="text-end">$402,822.40</td>
+          <td class="text-end">$374,507.18</td>
+        </tr>
+        <tr>
+          <td>2029-07-01</td>
+          <td class="text-end">9402</td>
+          <td class="text-end">517</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">6,894.84</td>
+          <td class="text-end">4,596.56</td>
+          <td class="text-end">$158.58</td>
+          <td class="text-end">$6.83</td>
+          <td class="text-end">$460.32</td>
+          <td class="text-end">$7.85</td>
+          <td class="text-end">$28,348.24</td>
+          <td class="text-end">$3.02</td>
+          <td class="text-end">9,217.23</td>
+          <td class="text-end">$424,970.40</td>
+          <td class="text-end">$396,622.16</td>
+        </tr>
+        <tr>
+          <td>2029-08-01</td>
+          <td class="text-end">9919</td>
+          <td class="text-end">545</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">7,273.97</td>
+          <td class="text-end">4,849.32</td>
+          <td class="text-end">$167.30</td>
+          <td class="text-end">$7.20</td>
+          <td class="text-end">$485.63</td>
+          <td class="text-end">$8.28</td>
+          <td class="text-end">$28,383.08</td>
+          <td class="text-end">$2.86</td>
+          <td class="text-end">9,469.36</td>
+          <td class="text-end">$448,338.80</td>
+          <td class="text-end">$419,955.72</td>
+        </tr>
+        <tr>
+          <td>2029-09-01</td>
+          <td class="text-end">10464</td>
+          <td class="text-end">575</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">7,673.64</td>
+          <td class="text-end">5,115.76</td>
+          <td class="text-end">$176.49</td>
+          <td class="text-end">$7.60</td>
+          <td class="text-end">$512.32</td>
+          <td class="text-end">$8.74</td>
+          <td class="text-end">$28,419.80</td>
+          <td class="text-end">$2.72</td>
+          <td class="text-end">9,735.14</td>
+          <td class="text-end">$472,972.80</td>
+          <td class="text-end">$444,553.00</td>
+        </tr>
+        <tr>
+          <td>2029-10-01</td>
+          <td class="text-end">11039</td>
+          <td class="text-end">607</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">8,095.31</td>
+          <td class="text-end">5,396.87</td>
+          <td class="text-end">$186.19</td>
+          <td class="text-end">$8.01</td>
+          <td class="text-end">$540.47</td>
+          <td class="text-end">$9.22</td>
+          <td class="text-end">$28,458.55</td>
+          <td class="text-end">$2.58</td>
+          <td class="text-end">10,015.55</td>
+          <td class="text-end">$498,962.80</td>
+          <td class="text-end">$470,504.25</td>
+        </tr>
+        <tr>
+          <td>2029-11-01</td>
+          <td class="text-end">11646</td>
+          <td class="text-end">640</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">8,540.45</td>
+          <td class="text-end">5,693.63</td>
+          <td class="text-end">$196.43</td>
+          <td class="text-end">$8.46</td>
+          <td class="text-end">$570.19</td>
+          <td class="text-end">$9.72</td>
+          <td class="text-end">$28,499.46</td>
+          <td class="text-end">$2.45</td>
+          <td class="text-end">10,311.56</td>
+          <td class="text-end">$526,399.20</td>
+          <td class="text-end">$497,899.74</td>
+        </tr>
+        <tr>
+          <td>2029-12-01</td>
+          <td class="text-end">12286</td>
+          <td class="text-end">675</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">9,009.78</td>
+          <td class="text-end">6,006.52</td>
+          <td class="text-end">$207.23</td>
+          <td class="text-end">$8.92</td>
+          <td class="text-end">$601.52</td>
+          <td class="text-end">$10.26</td>
+          <td class="text-end">$28,542.58</td>
+          <td class="text-end">$2.32</td>
+          <td class="text-end">10,623.67</td>
+          <td class="text-end">$555,327.20</td>
+          <td class="text-end">$526,784.62</td>
+        </tr>
+        <tr>
+          <td>2030-01-01</td>
+          <td class="text-end">12961</td>
+          <td class="text-end">712</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">9,504.79</td>
+          <td class="text-end">6,336.52</td>
+          <td class="text-end">$218.61</td>
+          <td class="text-end">$9.41</td>
+          <td class="text-end">$634.57</td>
+          <td class="text-end">$10.82</td>
+          <td class="text-end">$28,588.07</td>
+          <td class="text-end">$2.21</td>
+          <td class="text-end">10,952.85</td>
+          <td class="text-end">$585,837.20</td>
+          <td class="text-end">$557,249.13</td>
+        </tr>
+        <tr>
+          <td>2030-02-01</td>
+          <td class="text-end">13673</td>
+          <td class="text-end">752</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">10,026.92</td>
+          <td class="text-end">6,684.61</td>
+          <td class="text-end">$230.62</td>
+          <td class="text-end">$9.93</td>
+          <td class="text-end">$669.43</td>
+          <td class="text-end">$11.41</td>
+          <td class="text-end">$28,636.05</td>
+          <td class="text-end">$2.09</td>
+          <td class="text-end">11,300.07</td>
+          <td class="text-end">$618,019.60</td>
+          <td class="text-end">$589,383.55</td>
+        </tr>
+        <tr>
+          <td>2030-03-01</td>
+          <td class="text-end">14425</td>
+          <td class="text-end">793</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">10,578.39</td>
+          <td class="text-end">7,052.26</td>
+          <td class="text-end">$243.30</td>
+          <td class="text-end">$10.47</td>
+          <td class="text-end">$706.25</td>
+          <td class="text-end">$12.04</td>
+          <td class="text-end">$28,686.73</td>
+          <td class="text-end">$1.99</td>
+          <td class="text-end">11,666.80</td>
+          <td class="text-end">$652,010.00</td>
+          <td class="text-end">$623,323.27</td>
+        </tr>
+        <tr>
+          <td>2030-04-01</td>
+          <td class="text-end">15218</td>
+          <td class="text-end">836</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">11,159.93</td>
+          <td class="text-end">7,439.95</td>
+          <td class="text-end">$256.68</td>
+          <td class="text-end">$11.05</td>
+          <td class="text-end">$745.07</td>
+          <td class="text-end">$12.70</td>
+          <td class="text-end">$28,740.16</td>
+          <td class="text-end">$1.89</td>
+          <td class="text-end">12,053.52</td>
+          <td class="text-end">$687,853.60</td>
+          <td class="text-end">$659,113.44</td>
+        </tr>
+        <tr>
+          <td>2030-05-01</td>
+          <td class="text-end">16054</td>
+          <td class="text-end">882</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">11,773.00</td>
+          <td class="text-end">7,848.67</td>
+          <td class="text-end">$270.78</td>
+          <td class="text-end">$11.66</td>
+          <td class="text-end">$786.00</td>
+          <td class="text-end">$13.40</td>
+          <td class="text-end">$28,796.50</td>
+          <td class="text-end">$1.79</td>
+          <td class="text-end">12,461.21</td>
+          <td class="text-end">$725,640.80</td>
+          <td class="text-end">$696,844.30</td>
+        </tr>
+        <tr>
+          <td>2030-06-01</td>
+          <td class="text-end">16936</td>
+          <td class="text-end">931</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">12,419.80</td>
+          <td class="text-end">8,279.87</td>
+          <td class="text-end">$285.66</td>
+          <td class="text-end">$12.30</td>
+          <td class="text-end">$829.19</td>
+          <td class="text-end">$14.14</td>
+          <td class="text-end">$28,855.94</td>
+          <td class="text-end">$1.70</td>
+          <td class="text-end">12,891.33</td>
+          <td class="text-end">$765,507.20</td>
+          <td class="text-end">$736,651.26</td>
+        </tr>
+        <tr>
+          <td>2030-07-01</td>
+          <td class="text-end">17867</td>
+          <td class="text-end">982</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">13,102.54</td>
+          <td class="text-end">8,735.03</td>
+          <td class="text-end">$301.36</td>
+          <td class="text-end">$12.97</td>
+          <td class="text-end">$874.77</td>
+          <td class="text-end">$14.92</td>
+          <td class="text-end">$28,918.67</td>
+          <td class="text-end">$1.62</td>
+          <td class="text-end">13,345.35</td>
+          <td class="text-end">$807,588.40</td>
+          <td class="text-end">$778,669.73</td>
+        </tr>
+        <tr>
+          <td>2030-08-01</td>
+          <td class="text-end">18849</td>
+          <td class="text-end">1036</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">13,822.68</td>
+          <td class="text-end">9,215.12</td>
+          <td class="text-end">$317.92</td>
+          <td class="text-end">$13.68</td>
+          <td class="text-end">$922.85</td>
+          <td class="text-end">$15.73</td>
+          <td class="text-end">$28,984.85</td>
+          <td class="text-end">$1.54</td>
+          <td class="text-end">13,824.25</td>
+          <td class="text-end">$851,974.80</td>
+          <td class="text-end">$822,989.95</td>
+        </tr>
+        <tr>
+          <td>2030-09-01</td>
+          <td class="text-end">19885</td>
+          <td class="text-end">1093</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">14,582.41</td>
+          <td class="text-end">9,721.61</td>
+          <td class="text-end">$335.40</td>
+          <td class="text-end">$14.44</td>
+          <td class="text-end">$973.57</td>
+          <td class="text-end">$16.60</td>
+          <td class="text-end">$29,054.66</td>
+          <td class="text-end">$1.46</td>
+          <td class="text-end">14,329.47</td>
+          <td class="text-end">$898,802.00</td>
+          <td class="text-end">$869,747.34</td>
+        </tr>
+        <tr>
+          <td>2030-10-01</td>
+          <td class="text-end">20978</td>
+          <td class="text-end">1153</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">15,383.95</td>
+          <td class="text-end">10,255.97</td>
+          <td class="text-end">$353.83</td>
+          <td class="text-end">$15.23</td>
+          <td class="text-end">$1,027.08</td>
+          <td class="text-end">$17.51</td>
+          <td class="text-end">$29,128.32</td>
+          <td class="text-end">$1.39</td>
+          <td class="text-end">14,862.49</td>
+          <td class="text-end">$948,205.60</td>
+          <td class="text-end">$919,077.28</td>
+        </tr>
+        <tr>
+          <td>2030-11-01</td>
+          <td class="text-end">22131</td>
+          <td class="text-end">1217</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">16,229.49</td>
+          <td class="text-end">10,819.66</td>
+          <td class="text-end">$373.28</td>
+          <td class="text-end">$16.07</td>
+          <td class="text-end">$1,083.53</td>
+          <td class="text-end">$18.47</td>
+          <td class="text-end">$29,206.01</td>
+          <td class="text-end">$1.32</td>
+          <td class="text-end">15,424.78</td>
+          <td class="text-end">$1,000,321.20</td>
+          <td class="text-end">$971,115.19</td>
+        </tr>
+        <tr>
+          <td>2030-12-01</td>
+          <td class="text-end">23348</td>
+          <td class="text-end">1284</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">17,121.96</td>
+          <td class="text-end">11,414.64</td>
+          <td class="text-end">$393.81</td>
+          <td class="text-end">$16.95</td>
+          <td class="text-end">$1,143.12</td>
+          <td class="text-end">$19.49</td>
+          <td class="text-end">$29,288.02</td>
+          <td class="text-end">$1.25</td>
+          <td class="text-end">16,018.27</td>
+          <td class="text-end">$1,055,329.60</td>
+          <td class="text-end">$1,026,041.58</td>
+        </tr>
+        <tr>
+          <td>2031-01-01</td>
+          <td class="text-end">24632</td>
+          <td class="text-end">1354</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">18,063.57</td>
+          <td class="text-end">12,042.38</td>
+          <td class="text-end">$415.46</td>
+          <td class="text-end">$17.88</td>
+          <td class="text-end">$1,205.98</td>
+          <td class="text-end">$20.56</td>
+          <td class="text-end">$29,374.55</td>
+          <td class="text-end">$1.19</td>
+          <td class="text-end">16,644.44</td>
+          <td class="text-end">$1,113,366.40</td>
+          <td class="text-end">$1,083,991.85</td>
+        </tr>
+        <tr>
+          <td>2031-02-01</td>
+          <td class="text-end">25986</td>
+          <td class="text-end">1429</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">19,056.51</td>
+          <td class="text-end">12,704.34</td>
+          <td class="text-end">$438.30</td>
+          <td class="text-end">$18.87</td>
+          <td class="text-end">$1,272.27</td>
+          <td class="text-end">$21.69</td>
+          <td class="text-end">$29,465.79</td>
+          <td class="text-end">$1.13</td>
+          <td class="text-end">17,304.74</td>
+          <td class="text-end">$1,174,567.20</td>
+          <td class="text-end">$1,145,101.41</td>
+        </tr>
+        <tr>
+          <td>2031-03-01</td>
+          <td class="text-end">27415</td>
+          <td class="text-end">1507</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">20,104.44</td>
+          <td class="text-end">13,402.96</td>
+          <td class="text-end">$462.40</td>
+          <td class="text-end">$19.90</td>
+          <td class="text-end">$1,342.24</td>
+          <td class="text-end">$22.89</td>
+          <td class="text-end">$29,562.09</td>
+          <td class="text-end">$1.08</td>
+          <td class="text-end">18,001.62</td>
+          <td class="text-end">$1,239,158.00</td>
+          <td class="text-end">$1,209,595.91</td>
+        </tr>
+        <tr>
+          <td>2031-04-01</td>
+          <td class="text-end">28922</td>
+          <td class="text-end">1590</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">21,209.58</td>
+          <td class="text-end">14,139.72</td>
+          <td class="text-end">$487.82</td>
+          <td class="text-end">$21.00</td>
+          <td class="text-end">$1,416.02</td>
+          <td class="text-end">$24.14</td>
+          <td class="text-end">$29,663.64</td>
+          <td class="text-end">$1.03</td>
+          <td class="text-end">18,736.54</td>
+          <td class="text-end">$1,307,274.40</td>
+          <td class="text-end">$1,277,610.76</td>
+        </tr>
+        <tr>
+          <td>2031-05-01</td>
+          <td class="text-end">30512</td>
+          <td class="text-end">1678</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">22,375.59</td>
+          <td class="text-end">14,917.06</td>
+          <td class="text-end">$514.64</td>
+          <td class="text-end">$22.15</td>
+          <td class="text-end">$1,493.87</td>
+          <td class="text-end">$25.47</td>
+          <td class="text-end">$29,770.79</td>
+          <td class="text-end">$0.98</td>
+          <td class="text-end">19,511.93</td>
+          <td class="text-end">$1,379,142.40</td>
+          <td class="text-end">$1,349,371.61</td>
+        </tr>
+        <tr>
+          <td>2031-06-01</td>
+          <td class="text-end">32190</td>
+          <td class="text-end">1770</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">23,606.13</td>
+          <td class="text-end">15,737.42</td>
+          <td class="text-end">$542.94</td>
+          <td class="text-end">$23.37</td>
+          <td class="text-end">$1,576.02</td>
+          <td class="text-end">$26.87</td>
+          <td class="text-end">$29,883.87</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">20,330.24</td>
+          <td class="text-end">$1,454,988.00</td>
+          <td class="text-end">$1,425,104.13</td>
+        </tr>
+        <tr>
+          <td>2031-07-01</td>
+          <td class="text-end">33960</td>
+          <td class="text-end">1867</td>
+          <td class="text-end">2</td>
+          <td class="text-end">$27,714.66</td>
+          <td class="text-end">24,904.14</td>
+          <td class="text-end">16,602.76</td>
+          <td class="text-end">$572.80</td>
+          <td class="text-end">$24.66</td>
+          <td class="text-end">$1,662.68</td>
+          <td class="text-end">$28.35</td>
+          <td class="text-end">$30,003.14</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">21,193.42</td>
+          <td class="text-end">$1,534,992.00</td>
+          <td class="text-end">$1,504,988.86</td>
+        </tr>
+        <tr>
+          <td>2031-08-01</td>
+          <td class="text-end">35827</td>
+          <td class="text-end">1970</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">26,273.28</td>
+          <td class="text-end">17,515.52</td>
+          <td class="text-end">$604.29</td>
+          <td class="text-end">$26.01</td>
+          <td class="text-end">$1,754.09</td>
+          <td class="text-end">$29.91</td>
+          <td class="text-end">$43,986.28</td>
+          <td class="text-end">$1.23</td>
+          <td class="text-end">24,419.98</td>
+          <td class="text-end">$1,619,380.40</td>
+          <td class="text-end">$1,575,394.12</td>
+        </tr>
+        <tr>
+          <td>2031-09-01</td>
+          <td class="text-end">37797</td>
+          <td class="text-end">2078</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">27,717.95</td>
+          <td class="text-end">18,478.64</td>
+          <td class="text-end">$637.51</td>
+          <td class="text-end">$27.44</td>
+          <td class="text-end">$1,850.54</td>
+          <td class="text-end">$31.55</td>
+          <td class="text-end">$44,119.04</td>
+          <td class="text-end">$1.17</td>
+          <td class="text-end">25,380.69</td>
+          <td class="text-end">$1,708,424.40</td>
+          <td class="text-end">$1,664,305.36</td>
+        </tr>
+        <tr>
+          <td>2031-10-01</td>
+          <td class="text-end">39875</td>
+          <td class="text-end">2193</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">29,241.83</td>
+          <td class="text-end">19,494.55</td>
+          <td class="text-end">$672.56</td>
+          <td class="text-end">$28.95</td>
+          <td class="text-end">$1,952.28</td>
+          <td class="text-end">$33.29</td>
+          <td class="text-end">$44,259.07</td>
+          <td class="text-end">$1.11</td>
+          <td class="text-end">26,394.07</td>
+          <td class="text-end">$1,802,350.00</td>
+          <td class="text-end">$1,758,090.93</td>
+        </tr>
+        <tr>
+          <td>2031-11-01</td>
+          <td class="text-end">42068</td>
+          <td class="text-end">2313</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">30,850.04</td>
+          <td class="text-end">20,566.69</td>
+          <td class="text-end">$709.55</td>
+          <td class="text-end">$30.54</td>
+          <td class="text-end">$2,059.65</td>
+          <td class="text-end">$35.12</td>
+          <td class="text-end">$44,406.85</td>
+          <td class="text-end">$1.06</td>
+          <td class="text-end">27,463.52</td>
+          <td class="text-end">$1,901,473.60</td>
+          <td class="text-end">$1,857,066.75</td>
+        </tr>
+        <tr>
+          <td>2031-12-01</td>
+          <td class="text-end">44381</td>
+          <td class="text-end">2440</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">32,546.25</td>
+          <td class="text-end">21,697.50</td>
+          <td class="text-end">$748.56</td>
+          <td class="text-end">$32.22</td>
+          <td class="text-end">$2,172.89</td>
+          <td class="text-end">$37.05</td>
+          <td class="text-end">$44,562.72</td>
+          <td class="text-end">$1.00</td>
+          <td class="text-end">28,591.50</td>
+          <td class="text-end">$2,006,021.20</td>
+          <td class="text-end">$1,961,458.48</td>
+        </tr>
+        <tr>
+          <td>2032-01-01</td>
+          <td class="text-end">46821</td>
+          <td class="text-end">2575</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">34,335.59</td>
+          <td class="text-end">22,890.39</td>
+          <td class="text-end">$789.72</td>
+          <td class="text-end">$33.99</td>
+          <td class="text-end">$2,292.36</td>
+          <td class="text-end">$39.09</td>
+          <td class="text-end">$44,727.14</td>
+          <td class="text-end">$0.96</td>
+          <td class="text-end">29,781.42</td>
+          <td class="text-end">$2,116,309.20</td>
+          <td class="text-end">$2,071,582.06</td>
+        </tr>
+        <tr>
+          <td>2032-02-01</td>
+          <td class="text-end">49396</td>
+          <td class="text-end">2716</td>
+          <td class="text-end">3</td>
+          <td class="text-end">$41,571.99</td>
+          <td class="text-end">36,223.93</td>
+          <td class="text-end">24,149.29</td>
+          <td class="text-end">$833.15</td>
+          <td class="text-end">$35.86</td>
+          <td class="text-end">$2,418.43</td>
+          <td class="text-end">$41.23</td>
+          <td class="text-end">$44,900.67</td>
+          <td class="text-end">$0.91</td>
+          <td class="text-end">31,037.17</td>
+          <td class="text-end">$2,232,699.20</td>
+          <td class="text-end">$2,187,798.53</td>
+        </tr>
+        <tr>
+          <td>2032-03-01</td>
+          <td class="text-end">52112</td>
+          <td class="text-end">2866</td>
+          <td class="text-end">4</td>
+          <td class="text-end">$55,429.32</td>
+          <td class="text-end">38,215.68</td>
+          <td class="text-end">25,477.12</td>
+          <td class="text-end">$878.96</td>
+          <td class="text-end">$37.83</td>
+          <td class="text-end">$2,551.40</td>
+          <td class="text-end">$43.50</td>
+          <td class="text-end">$58,941.02</td>
+          <td class="text-end">$1.13</td>
+          <td class="text-end">34,677.76</td>
+          <td class="text-end">$2,355,462.40</td>
+          <td class="text-end">$2,296,521.38</td>
+        </tr>
+        <tr>
+          <td>2032-04-01</td>
+          <td class="text-end">54978</td>
+          <td class="text-end">3023</td>
+          <td class="text-end">4</td>
+          <td class="text-end">$55,429.32</td>
+          <td class="text-end">40,317.42</td>
+          <td class="text-end">26,878.28</td>
+          <td class="text-end">$927.30</td>
+          <td class="text-end">$39.91</td>
+          <td class="text-end">$2,691.72</td>
+          <td class="text-end">$45.89</td>
+          <td class="text-end">$59,134.15</td>
+          <td class="text-end">$1.08</td>
+          <td class="text-end">36,075.42</td>
+          <td class="text-end">$2,485,005.60</td>
+          <td class="text-end">$2,425,871.45</td>
+        </tr>
+        <tr>
+          <td>2032-05-01</td>
+          <td class="text-end">58001</td>
+          <td class="text-end">3190</td>
+          <td class="text-end">4</td>
+          <td class="text-end">$55,429.32</td>
+          <td class="text-end">42,534.30</td>
+          <td class="text-end">28,356.20</td>
+          <td class="text-end">$978.29</td>
+          <td class="text-end">$42.11</td>
+          <td class="text-end">$2,839.73</td>
+          <td class="text-end">$48.42</td>
+          <td class="text-end">$59,337.87</td>
+          <td class="text-end">$1.02</td>
+          <td class="text-end">37,549.64</td>
+          <td class="text-end">$2,621,645.20</td>
+          <td class="text-end">$2,562,307.33</td>
+        </tr>
+        <tr>
+          <td>2032-06-01</td>
+          <td class="text-end">61191</td>
+          <td class="text-end">3365</td>
+          <td class="text-end">4</td>
+          <td class="text-end">$55,429.32</td>
+          <td class="text-end">44,873.65</td>
+          <td class="text-end">29,915.77</td>
+          <td class="text-end">$1,032.09</td>
+          <td class="text-end">$44.42</td>
+          <td class="text-end">$2,995.91</td>
+          <td class="text-end">$51.08</td>
+          <td class="text-end">$59,552.83</td>
+          <td class="text-end">$0.97</td>
+          <td class="text-end">39,105.31</td>
+          <td class="text-end">$2,765,833.20</td>
+          <td class="text-end">$2,706,280.37</td>
+        </tr>
+        <tr>
+          <td>2032-07-01</td>
+          <td class="text-end">64556</td>
+          <td class="text-end">3550</td>
+          <td class="text-end">4</td>
+          <td class="text-end">$55,429.32</td>
+          <td class="text-end">47,341.33</td>
+          <td class="text-end">31,560.89</td>
+          <td class="text-end">$1,088.85</td>
+          <td class="text-end">$46.87</td>
+          <td class="text-end">$3,160.66</td>
+          <td class="text-end">$53.89</td>
+          <td class="text-end">$59,779.59</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">40,746.32</td>
+          <td class="text-end">$2,917,931.20</td>
+          <td class="text-end">$2,858,151.61</td>
+        </tr>
+        <tr>
+          <td>2032-08-01</td>
+          <td class="text-end">68106</td>
+          <td class="text-end">3745</td>
+          <td class="text-end">4</td>
+          <td class="text-end">$55,429.32</td>
+          <td class="text-end">49,944.68</td>
+          <td class="text-end">33,296.45</td>
+          <td class="text-end">$1,148.73</td>
+          <td class="text-end">$49.45</td>
+          <td class="text-end">$3,334.47</td>
+          <td class="text-end">$56.85</td>
+          <td class="text-end">$60,018.82</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">42,477.54</td>
+          <td class="text-end">$3,078,391.20</td>
+          <td class="text-end">$3,018,372.38</td>
+        </tr>
+        <tr>
+          <td>2032-09-01</td>
+          <td class="text-end">71851</td>
+          <td class="text-end">3951</td>
+          <td class="text-end">5</td>
+          <td class="text-end">$69,286.65</td>
+          <td class="text-end">52,691.03</td>
+          <td class="text-end">35,127.35</td>
+          <td class="text-end">$1,211.89</td>
+          <td class="text-end">$52.16</td>
+          <td class="text-end">$3,517.82</td>
+          <td class="text-end">$59.98</td>
+          <td class="text-end">$74,128.51</td>
+          <td class="text-end">$1.03</td>
+          <td class="text-end">46,619.95</td>
+          <td class="text-end">$3,247,665.20</td>
+          <td class="text-end">$3,173,536.69</td>
+        </tr>
+        <tr>
+          <td>2032-10-01</td>
+          <td class="text-end">75802</td>
+          <td class="text-end">4169</td>
+          <td class="text-end">5</td>
+          <td class="text-end">$69,286.65</td>
+          <td class="text-end">55,588.44</td>
+          <td class="text-end">37,058.96</td>
+          <td class="text-end">$1,278.53</td>
+          <td class="text-end">$55.03</td>
+          <td class="text-end">$3,711.27</td>
+          <td class="text-end">$63.28</td>
+          <td class="text-end">$74,394.76</td>
+          <td class="text-end">$0.98</td>
+          <td class="text-end">48,546.73</td>
+          <td class="text-end">$3,426,250.40</td>
+          <td class="text-end">$3,351,855.64</td>
+        </tr>
+        <tr>
+          <td>2032-11-01</td>
+          <td class="text-end">79971</td>
+          <td class="text-end">4398</td>
+          <td class="text-end">5</td>
+          <td class="text-end">$69,286.65</td>
+          <td class="text-end">58,645.73</td>
+          <td class="text-end">39,097.15</td>
+          <td class="text-end">$1,348.85</td>
+          <td class="text-end">$58.06</td>
+          <td class="text-end">$3,915.38</td>
+          <td class="text-end">$66.76</td>
+          <td class="text-end">$74,675.70</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">50,579.82</td>
+          <td class="text-end">$3,614,689.20</td>
+          <td class="text-end">$3,540,013.50</td>
+        </tr>
+        <tr>
+          <td>2032-12-01</td>
+          <td class="text-end">84369</td>
+          <td class="text-end">4640</td>
+          <td class="text-end">5</td>
+          <td class="text-end">$69,286.65</td>
+          <td class="text-end">61,870.94</td>
+          <td class="text-end">41,247.30</td>
+          <td class="text-end">$1,423.03</td>
+          <td class="text-end">$61.25</td>
+          <td class="text-end">$4,130.71</td>
+          <td class="text-end">$70.43</td>
+          <td class="text-end">$74,972.07</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">52,724.59</td>
+          <td class="text-end">$3,813,478.80</td>
+          <td class="text-end">$3,738,506.73</td>
+        </tr>
+        <tr>
+          <td>2033-01-01</td>
+          <td class="text-end">89009</td>
+          <td class="text-end">4895</td>
+          <td class="text-end">6</td>
+          <td class="text-end">$83,143.98</td>
+          <td class="text-end">65,273.63</td>
+          <td class="text-end">43,515.75</td>
+          <td class="text-end">$1,501.29</td>
+          <td class="text-end">$64.62</td>
+          <td class="text-end">$4,357.88</td>
+          <td class="text-end">$74.30</td>
+          <td class="text-end">$89,142.08</td>
+          <td class="text-end">$1.00</td>
+          <td class="text-end">57,303.46</td>
+          <td class="text-end">$4,023,206.80</td>
+          <td class="text-end">$3,934,064.72</td>
+        </tr>
+        <tr>
+          <td>2033-02-01</td>
+          <td class="text-end">93904</td>
+          <td class="text-end">5164</td>
+          <td class="text-end">6</td>
+          <td class="text-end">$83,143.98</td>
+          <td class="text-end">68,863.32</td>
+          <td class="text-end">45,908.88</td>
+          <td class="text-end">$1,583.86</td>
+          <td class="text-end">$68.17</td>
+          <td class="text-end">$4,597.54</td>
+          <td class="text-end">$78.39</td>
+          <td class="text-end">$89,471.94</td>
+          <td class="text-end">$0.95</td>
+          <td class="text-end">59,690.60</td>
+          <td class="text-end">$4,244,460.80</td>
+          <td class="text-end">$4,154,988.86</td>
+        </tr>
+        <tr>
+          <td>2033-03-01</td>
+          <td class="text-end">99068</td>
+          <td class="text-end">5448</td>
+          <td class="text-end">6</td>
+          <td class="text-end">$83,143.98</td>
+          <td class="text-end">72,650.27</td>
+          <td class="text-end">48,433.51</td>
+          <td class="text-end">$1,670.96</td>
+          <td class="text-end">$71.92</td>
+          <td class="text-end">$4,850.37</td>
+          <td class="text-end">$82.70</td>
+          <td class="text-end">$89,819.93</td>
+          <td class="text-end">$0.91</td>
+          <td class="text-end">62,208.93</td>
+          <td class="text-end">$4,477,873.60</td>
+          <td class="text-end">$4,388,053.67</td>
+        </tr>
+        <tr>
+          <td>2033-04-01</td>
+          <td class="text-end">104516</td>
+          <td class="text-end">5748</td>
+          <td class="text-end">7</td>
+          <td class="text-end">$97,001.31</td>
+          <td class="text-end">76,645.49</td>
+          <td class="text-end">51,096.99</td>
+          <td class="text-end">$1,762.85</td>
+          <td class="text-end">$75.88</td>
+          <td class="text-end">$5,117.10</td>
+          <td class="text-end">$87.25</td>
+          <td class="text-end">$104,044.39</td>
+          <td class="text-end">$1.00</td>
+          <td class="text-end">67,181.83</td>
+          <td class="text-end">$4,724,123.20</td>
+          <td class="text-end">$4,620,078.81</td>
+        </tr>
+        <tr>
+          <td>2033-05-01</td>
+          <td class="text-end">110264</td>
+          <td class="text-end">6064</td>
+          <td class="text-end">7</td>
+          <td class="text-end">$97,001.31</td>
+          <td class="text-end">80,860.72</td>
+          <td class="text-end">53,907.14</td>
+          <td class="text-end">$1,859.80</td>
+          <td class="text-end">$80.05</td>
+          <td class="text-end">$5,398.53</td>
+          <td class="text-end">$92.05</td>
+          <td class="text-end">$104,431.73</td>
+          <td class="text-end">$0.95</td>
+          <td class="text-end">69,984.96</td>
+          <td class="text-end">$4,983,932.80</td>
+          <td class="text-end">$4,879,501.07</td>
+        </tr>
+        <tr>
+          <td>2033-06-01</td>
+          <td class="text-end">116328</td>
+          <td class="text-end">6398</td>
+          <td class="text-end">7</td>
+          <td class="text-end">$97,001.31</td>
+          <td class="text-end">85,307.67</td>
+          <td class="text-end">56,871.78</td>
+          <td class="text-end">$1,962.08</td>
+          <td class="text-end">$84.45</td>
+          <td class="text-end">$5,695.42</td>
+          <td class="text-end">$97.11</td>
+          <td class="text-end">$104,840.37</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">72,942.18</td>
+          <td class="text-end">$5,258,025.60</td>
+          <td class="text-end">$5,153,185.23</td>
+        </tr>
+        <tr>
+          <td>2033-07-01</td>
+          <td class="text-end">122726</td>
+          <td class="text-end">6749</td>
+          <td class="text-end">8</td>
+          <td class="text-end">$110,858.64</td>
+          <td class="text-end">89,999.57</td>
+          <td class="text-end">59,999.71</td>
+          <td class="text-end">$2,069.99</td>
+          <td class="text-end">$89.10</td>
+          <td class="text-end">$6,008.66</td>
+          <td class="text-end">$102.45</td>
+          <td class="text-end">$119,128.84</td>
+          <td class="text-end">$0.97</td>
+          <td class="text-end">78,378.38</td>
+          <td class="text-end">$5,547,215.20</td>
+          <td class="text-end">$5,428,086.36</td>
+        </tr>
+        <tr>
+          <td>2033-08-01</td>
+          <td class="text-end">129475</td>
+          <td class="text-end">7121</td>
+          <td class="text-end">8</td>
+          <td class="text-end">$110,858.64</td>
+          <td class="text-end">94,948.86</td>
+          <td class="text-end">63,299.24</td>
+          <td class="text-end">$2,183.82</td>
+          <td class="text-end">$94.00</td>
+          <td class="text-end">$6,339.10</td>
+          <td class="text-end">$108.08</td>
+          <td class="text-end">$119,583.64</td>
+          <td class="text-end">$0.92</td>
+          <td class="text-end">81,669.66</td>
+          <td class="text-end">$5,852,270.00</td>
+          <td class="text-end">$5,732,686.36</td>
+        </tr>
+        <tr>
+          <td>2033-09-01</td>
+          <td class="text-end">136596</td>
+          <td class="text-end">7512</td>
+          <td class="text-end">9</td>
+          <td class="text-end">$124,715.97</td>
+          <td class="text-end">100,170.96</td>
+          <td class="text-end">66,780.64</td>
+          <td class="text-end">$2,303.93</td>
+          <td class="text-end">$99.17</td>
+          <td class="text-end">$6,687.74</td>
+          <td class="text-end">$114.03</td>
+          <td class="text-end">$133,920.84</td>
+          <td class="text-end">$0.98</td>
+          <td class="text-end">87,458.43</td>
+          <td class="text-end">$6,174,139.20</td>
+          <td class="text-end">$6,040,218.36</td>
+        </tr>
+        <tr>
+          <td>2033-10-01</td>
+          <td class="text-end">144108</td>
+          <td class="text-end">7925</td>
+          <td class="text-end">9</td>
+          <td class="text-end">$124,715.97</td>
+          <td class="text-end">105,679.79</td>
+          <td class="text-end">70,453.19</td>
+          <td class="text-end">$2,430.64</td>
+          <td class="text-end">$104.62</td>
+          <td class="text-end">$7,055.53</td>
+          <td class="text-end">$120.30</td>
+          <td class="text-end">$134,427.05</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">91,121.80</td>
+          <td class="text-end">$6,513,681.60</td>
+          <td class="text-end">$6,379,254.55</td>
+        </tr>
+        <tr>
+          <td>2033-11-01</td>
+          <td class="text-end">152033</td>
+          <td class="text-end">8361</td>
+          <td class="text-end">9</td>
+          <td class="text-end">$124,715.97</td>
+          <td class="text-end">111,491.49</td>
+          <td class="text-end">74,327.66</td>
+          <td class="text-end">$2,564.30</td>
+          <td class="text-end">$110.38</td>
+          <td class="text-end">$7,443.54</td>
+          <td class="text-end">$126.91</td>
+          <td class="text-end">$134,961.10</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">94,986.58</td>
+          <td class="text-end">$6,871,891.60</td>
+          <td class="text-end">$6,736,930.50</td>
+        </tr>
+        <tr>
+          <td>2033-12-01</td>
+          <td class="text-end">160394</td>
+          <td class="text-end">8821</td>
+          <td class="text-end">10</td>
+          <td class="text-end">$138,573.30</td>
+          <td class="text-end">117,622.92</td>
+          <td class="text-end">78,415.28</td>
+          <td class="text-end">$2,705.33</td>
+          <td class="text-end">$116.45</td>
+          <td class="text-end">$7,852.89</td>
+          <td class="text-end">$133.89</td>
+          <td class="text-end">$149,381.86</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">101,380.07</td>
+          <td class="text-end">$7,249,808.80</td>
+          <td class="text-end">$7,100,426.94</td>
+        </tr>
+        <tr>
+          <td>2034-01-01</td>
+          <td class="text-end">169215</td>
+          <td class="text-end">9306</td>
+          <td class="text-end">10</td>
+          <td class="text-end">$138,573.30</td>
+          <td class="text-end">124,091.69</td>
+          <td class="text-end">82,727.79</td>
+          <td class="text-end">$2,854.11</td>
+          <td class="text-end">$122.85</td>
+          <td class="text-end">$8,284.77</td>
+          <td class="text-end">$141.26</td>
+          <td class="text-end">$149,976.28</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">105,681.80</td>
+          <td class="text-end">$7,648,518.00</td>
+          <td class="text-end">$7,498,541.72</td>
+        </tr>
+        <tr>
+          <td>2034-02-01</td>
+          <td class="text-end">178521</td>
+          <td class="text-end">9818</td>
+          <td class="text-end">11</td>
+          <td class="text-end">$152,430.63</td>
+          <td class="text-end">130,916.13</td>
+          <td class="text-end">87,277.42</td>
+          <td class="text-end">$3,011.07</td>
+          <td class="text-end">$129.61</td>
+          <td class="text-end">$8,740.39</td>
+          <td class="text-end">$149.03</td>
+          <td class="text-end">$164,460.72</td>
+          <td class="text-end">$0.92</td>
+          <td class="text-end">112,536.14</td>
+          <td class="text-end">$8,069,149.20</td>
+          <td class="text-end">$7,904,688.48</td>
+        </tr>
+        <tr>
+          <td>2034-03-01</td>
+          <td class="text-end">188339</td>
+          <td class="text-end">10358</td>
+          <td class="text-end">12</td>
+          <td class="text-end">$166,287.96</td>
+          <td class="text-end">138,116.03</td>
+          <td class="text-end">92,077.36</td>
+          <td class="text-end">$3,176.67</td>
+          <td class="text-end">$136.73</td>
+          <td class="text-end">$9,221.08</td>
+          <td class="text-end">$157.22</td>
+          <td class="text-end">$178,979.66</td>
+          <td class="text-end">$0.95</td>
+          <td class="text-end">119,640.16</td>
+          <td class="text-end">$8,512,922.80</td>
+          <td class="text-end">$8,333,943.14</td>
+        </tr>
+        <tr>
+          <td>2034-04-01</td>
+          <td class="text-end">198697</td>
+          <td class="text-end">10928</td>
+          <td class="text-end">12</td>
+          <td class="text-end">$166,287.96</td>
+          <td class="text-end">145,711.94</td>
+          <td class="text-end">97,141.29</td>
+          <td class="text-end">$3,351.37</td>
+          <td class="text-end">$144.25</td>
+          <td class="text-end">$9,728.21</td>
+          <td class="text-end">$165.87</td>
+          <td class="text-end">$179,677.66</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">124,691.44</td>
+          <td class="text-end">$8,981,104.40</td>
+          <td class="text-end">$8,801,426.74</td>
+        </tr>
+        <tr>
+          <td>2034-05-01</td>
+          <td class="text-end">209625</td>
+          <td class="text-end">11529</td>
+          <td class="text-end">13</td>
+          <td class="text-end">$180,145.29</td>
+          <td class="text-end">153,725.85</td>
+          <td class="text-end">102,483.90</td>
+          <td class="text-end">$3,535.69</td>
+          <td class="text-end">$152.19</td>
+          <td class="text-end">$10,263.24</td>
+          <td class="text-end">$174.99</td>
+          <td class="text-end">$194,271.40</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">132,336.77</td>
+          <td class="text-end">$9,475,050.00</td>
+          <td class="text-end">$9,280,778.60</td>
+        </tr>
+        <tr>
+          <td>2034-06-01</td>
+          <td class="text-end">221154</td>
+          <td class="text-end">12163</td>
+          <td class="text-end">13</td>
+          <td class="text-end">$180,145.29</td>
+          <td class="text-end">162,180.50</td>
+          <td class="text-end">108,120.33</td>
+          <td class="text-end">$3,730.15</td>
+          <td class="text-end">$160.56</td>
+          <td class="text-end">$10,827.70</td>
+          <td class="text-end">$184.62</td>
+          <td class="text-end">$195,048.32</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">137,959.11</td>
+          <td class="text-end">$9,996,160.80</td>
+          <td class="text-end">$9,801,112.48</td>
+        </tr>
+        <tr>
+          <td>2034-07-01</td>
+          <td class="text-end">233317</td>
+          <td class="text-end">12832</td>
+          <td class="text-end">14</td>
+          <td class="text-end">$194,002.62</td>
+          <td class="text-end">171,100.08</td>
+          <td class="text-end">114,066.72</td>
+          <td class="text-end">$3,935.30</td>
+          <td class="text-end">$169.39</td>
+          <td class="text-end">$11,423.20</td>
+          <td class="text-end">$194.77</td>
+          <td class="text-end">$209,725.28</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">146,206.72</td>
+          <td class="text-end">$10,545,928.40</td>
+          <td class="text-end">$10,336,203.12</td>
+        </tr>
+        <tr>
+          <td>2034-08-01</td>
+          <td class="text-end">246149</td>
+          <td class="text-end">13538</td>
+          <td class="text-end">15</td>
+          <td class="text-end">$207,859.95</td>
+          <td class="text-end">180,510.27</td>
+          <td class="text-end">120,340.18</td>
+          <td class="text-end">$4,151.74</td>
+          <td class="text-end">$178.71</td>
+          <td class="text-end">$12,051.46</td>
+          <td class="text-end">$205.48</td>
+          <td class="text-end">$224,447.33</td>
+          <td class="text-end">$0.91</td>
+          <td class="text-end">154,780.57</td>
+          <td class="text-end">$11,125,934.80</td>
+          <td class="text-end">$10,901,487.47</td>
+        </tr>
+        <tr>
+          <td>2034-09-01</td>
+          <td class="text-end">259687</td>
+          <td class="text-end">14282</td>
+          <td class="text-end">16</td>
+          <td class="text-end">$221,717.28</td>
+          <td class="text-end">190,438.19</td>
+          <td class="text-end">126,958.79</td>
+          <td class="text-end">$4,380.08</td>
+          <td class="text-end">$188.53</td>
+          <td class="text-end">$12,714.28</td>
+          <td class="text-end">$216.78</td>
+          <td class="text-end">$239,216.95</td>
+          <td class="text-end">$0.92</td>
+          <td class="text-end">163,698.72</td>
+          <td class="text-end">$11,737,852.40</td>
+          <td class="text-end">$11,498,635.45</td>
+        </tr>
+        <tr>
+          <td>2034-10-01</td>
+          <td class="text-end">273969</td>
+          <td class="text-end">15068</td>
+          <td class="text-end">17</td>
+          <td class="text-end">$235,574.61</td>
+          <td class="text-end">200,911.71</td>
+          <td class="text-end">133,941.14</td>
+          <td class="text-end">$4,620.97</td>
+          <td class="text-end">$198.90</td>
+          <td class="text-end">$13,413.52</td>
+          <td class="text-end">$228.70</td>
+          <td class="text-end">$254,036.71</td>
+          <td class="text-end">$0.93</td>
+          <td class="text-end">172,979.70</td>
+          <td class="text-end">$12,383,398.80</td>
+          <td class="text-end">$12,129,362.09</td>
+        </tr>
+        <tr>
+          <td>2034-11-01</td>
+          <td class="text-end">289037</td>
+          <td class="text-end">15897</td>
+          <td class="text-end">17</td>
+          <td class="text-end">$235,574.61</td>
+          <td class="text-end">211,961.64</td>
+          <td class="text-end">141,307.76</td>
+          <td class="text-end">$4,875.12</td>
+          <td class="text-end">$209.84</td>
+          <td class="text-end">$14,151.25</td>
+          <td class="text-end">$241.28</td>
+          <td class="text-end">$255,052.10</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">180,327.90</td>
+          <td class="text-end">$13,064,472.40</td>
+          <td class="text-end">$12,809,420.30</td>
+        </tr>
+        <tr>
+          <td>2034-12-01</td>
+          <td class="text-end">304934</td>
+          <td class="text-end">16771</td>
+          <td class="text-end">18</td>
+          <td class="text-end">$249,431.94</td>
+          <td class="text-end">223,619.51</td>
+          <td class="text-end">149,079.67</td>
+          <td class="text-end">$5,143.25</td>
+          <td class="text-end">$221.38</td>
+          <td class="text-end">$14,929.57</td>
+          <td class="text-end">$254.55</td>
+          <td class="text-end">$269,980.69</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">190,396.47</td>
+          <td class="text-end">$13,783,016.80</td>
+          <td class="text-end">$13,513,036.11</td>
+        </tr>
+        <tr>
+          <td>2035-01-01</td>
+          <td class="text-end">321705</td>
+          <td class="text-end">17693</td>
+          <td class="text-end">19</td>
+          <td class="text-end">$263,289.27</td>
+          <td class="text-end">235,918.31</td>
+          <td class="text-end">157,278.87</td>
+          <td class="text-end">$5,426.12</td>
+          <td class="text-end">$233.56</td>
+          <td class="text-end">$15,750.68</td>
+          <td class="text-end">$268.55</td>
+          <td class="text-end">$284,968.18</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">200,891.25</td>
+          <td class="text-end">$14,541,066.00</td>
+          <td class="text-end">$14,256,097.82</td>
+        </tr>
+        <tr>
+          <td>2035-02-01</td>
+          <td class="text-end">339398</td>
+          <td class="text-end">18666</td>
+          <td class="text-end">20</td>
+          <td class="text-end">$277,146.60</td>
+          <td class="text-end">248,893.25</td>
+          <td class="text-end">165,928.83</td>
+          <td class="text-end">$5,724.54</td>
+          <td class="text-end">$246.40</td>
+          <td class="text-end">$16,616.93</td>
+          <td class="text-end">$283.32</td>
+          <td class="text-end">$300,017.80</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">211,835.67</td>
+          <td class="text-end">$15,340,789.60</td>
+          <td class="text-end">$15,040,771.80</td>
+        </tr>
+        <tr>
+          <td>2035-03-01</td>
+          <td class="text-end">358064</td>
+          <td class="text-end">19693</td>
+          <td class="text-end">22</td>
+          <td class="text-end">$304,861.26</td>
+          <td class="text-end">262,581.72</td>
+          <td class="text-end">175,054.48</td>
+          <td class="text-end">$6,039.38</td>
+          <td class="text-end">$259.96</td>
+          <td class="text-end">$17,530.81</td>
+          <td class="text-end">$298.91</td>
+          <td class="text-end">$328,990.31</td>
+          <td class="text-end">$0.92</td>
+          <td class="text-end">225,570.67</td>
+          <td class="text-end">$16,184,492.80</td>
+          <td class="text-end">$15,855,502.49</td>
+        </tr>
+        <tr>
+          <td>2035-04-01</td>
+          <td class="text-end">377757</td>
+          <td class="text-end">20776</td>
+          <td class="text-end">23</td>
+          <td class="text-end">$318,718.59</td>
+          <td class="text-end">277,023.34</td>
+          <td class="text-end">184,682.22</td>
+          <td class="text-end">$6,371.54</td>
+          <td class="text-end">$274.25</td>
+          <td class="text-end">$18,494.98</td>
+          <td class="text-end">$315.34</td>
+          <td class="text-end">$344,174.71</td>
+          <td class="text-end">$0.91</td>
+          <td class="text-end">237,490.43</td>
+          <td class="text-end">$17,074,616.40</td>
+          <td class="text-end">$16,730,441.69</td>
+        </tr>
+        <tr>
+          <td>2035-05-01</td>
+          <td class="text-end">398533</td>
+          <td class="text-end">21919</td>
+          <td class="text-end">24</td>
+          <td class="text-end">$332,575.92</td>
+          <td class="text-end">292,259.15</td>
+          <td class="text-end">194,839.44</td>
+          <td class="text-end">$6,721.96</td>
+          <td class="text-end">$289.34</td>
+          <td class="text-end">$19,512.18</td>
+          <td class="text-end">$332.69</td>
+          <td class="text-end">$359,432.08</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">249,938.33</td>
+          <td class="text-end">$18,013,691.60</td>
+          <td class="text-end">$17,654,259.52</td>
+        </tr>
+        <tr>
+          <td>2035-06-01</td>
+          <td class="text-end">420452</td>
+          <td class="text-end">23124</td>
+          <td class="text-end">25</td>
+          <td class="text-end">$346,433.25</td>
+          <td class="text-end">308,333.18</td>
+          <td class="text-end">205,555.45</td>
+          <td class="text-end">$7,091.66</td>
+          <td class="text-end">$305.25</td>
+          <td class="text-end">$20,585.33</td>
+          <td class="text-end">$350.99</td>
+          <td class="text-end">$374,766.48</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">262,943.64</td>
+          <td class="text-end">$19,004,430.40</td>
+          <td class="text-end">$18,629,663.92</td>
+        </tr>
+        <tr>
+          <td>2035-07-01</td>
+          <td class="text-end">443576</td>
+          <td class="text-end">24396</td>
+          <td class="text-end">27</td>
+          <td class="text-end">$374,147.91</td>
+          <td class="text-end">325,290.87</td>
+          <td class="text-end">216,860.58</td>
+          <td class="text-end">$7,481.69</td>
+          <td class="text-end">$322.04</td>
+          <td class="text-end">$21,717.48</td>
+          <td class="text-end">$370.29</td>
+          <td class="text-end">$404,039.41</td>
+          <td class="text-end">$0.91</td>
+          <td class="text-end">278,852.67</td>
+          <td class="text-end">$20,049,635.20</td>
+          <td class="text-end">$19,645,595.79</td>
+        </tr>
+        <tr>
+          <td>2035-08-01</td>
+          <td class="text-end">467972</td>
+          <td class="text-end">25738</td>
+          <td class="text-end">28</td>
+          <td class="text-end">$388,005.24</td>
+          <td class="text-end">343,181.37</td>
+          <td class="text-end">228,787.58</td>
+          <td class="text-end">$7,893.17</td>
+          <td class="text-end">$339.75</td>
+          <td class="text-end">$22,911.91</td>
+          <td class="text-end">$390.65</td>
+          <td class="text-end">$419,540.73</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">293,065.94</td>
+          <td class="text-end">$21,152,334.40</td>
+          <td class="text-end">$20,732,793.67</td>
+        </tr>
+        <tr>
+          <td>2035-09-01</td>
+          <td class="text-end">493710</td>
+          <td class="text-end">27154</td>
+          <td class="text-end">29</td>
+          <td class="text-end">$401,862.57</td>
+          <td class="text-end">362,056.01</td>
+          <td class="text-end">241,370.67</td>
+          <td class="text-end">$8,327.29</td>
+          <td class="text-end">$358.44</td>
+          <td class="text-end">$24,172.04</td>
+          <td class="text-end">$412.14</td>
+          <td class="text-end">$435,132.48</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">307,933.65</td>
+          <td class="text-end">$22,315,692.00</td>
+          <td class="text-end">$21,880,559.52</td>
+        </tr>
+        <tr>
+          <td>2035-10-01</td>
+          <td class="text-end">520864</td>
+          <td class="text-end">28647</td>
+          <td class="text-end">31</td>
+          <td class="text-end">$429,577.23</td>
+          <td class="text-end">381,969.05</td>
+          <td class="text-end">254,646.04</td>
+          <td class="text-end">$8,785.29</td>
+          <td class="text-end">$378.15</td>
+          <td class="text-end">$25,501.50</td>
+          <td class="text-end">$434.81</td>
+          <td class="text-end">$464,676.98</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">325,807.99</td>
+          <td class="text-end">$23,543,052.80</td>
+          <td class="text-end">$23,078,375.82</td>
+        </tr>
+        <tr>
+          <td>2035-11-01</td>
+          <td class="text-end">549511</td>
+          <td class="text-end">30223</td>
+          <td class="text-end">33</td>
+          <td class="text-end">$457,291.89</td>
+          <td class="text-end">402,976.97</td>
+          <td class="text-end">268,651.31</td>
+          <td class="text-end">$9,268.47</td>
+          <td class="text-end">$398.95</td>
+          <td class="text-end">$26,904.06</td>
+          <td class="text-end">$458.72</td>
+          <td class="text-end">$494,322.09</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">344,410.42</td>
+          <td class="text-end">$24,837,897.20</td>
+          <td class="text-end">$24,343,575.11</td>
+        </tr>
+        <tr>
+          <td>2035-12-01</td>
+          <td class="text-end">579734</td>
+          <td class="text-end">31885</td>
+          <td class="text-end">35</td>
+          <td class="text-end">$485,006.55</td>
+          <td class="text-end">425,140.63</td>
+          <td class="text-end">283,427.08</td>
+          <td class="text-end">$9,778.23</td>
+          <td class="text-end">$420.89</td>
+          <td class="text-end">$28,383.78</td>
+          <td class="text-end">$483.95</td>
+          <td class="text-end">$524,073.40</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">363,781.42</td>
+          <td class="text-end">$26,203,976.80</td>
+          <td class="text-end">$25,679,903.40</td>
+        </tr>
+        <tr>
+          <td>2036-01-01</td>
+          <td class="text-end">611619</td>
+          <td class="text-end">33639</td>
+          <td class="text-end">36</td>
+          <td class="text-end">$498,863.88</td>
+          <td class="text-end">448,523.09</td>
+          <td class="text-end">299,015.39</td>
+          <td class="text-end">$10,316.03</td>
+          <td class="text-end">$444.04</td>
+          <td class="text-end">$29,944.87</td>
+          <td class="text-end">$510.57</td>
+          <td class="text-end">$540,079.38</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">381,646.84</td>
+          <td class="text-end">$27,645,178.80</td>
+          <td class="text-end">$27,105,099.42</td>
+        </tr>
+        <tr>
+          <td>2036-02-01</td>
+          <td class="text-end">645258</td>
+          <td class="text-end">35489</td>
+          <td class="text-end">38</td>
+          <td class="text-end">$526,578.54</td>
+          <td class="text-end">473,191.83</td>
+          <td class="text-end">315,461.22</td>
+          <td class="text-end">$10,883.41</td>
+          <td class="text-end">$468.46</td>
+          <td class="text-end">$31,591.83</td>
+          <td class="text-end">$538.65</td>
+          <td class="text-end">$570,060.89</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">402,683.72</td>
+          <td class="text-end">$29,165,661.60</td>
+          <td class="text-end">$28,595,600.71</td>
+        </tr>
+        <tr>
+          <td>2036-03-01</td>
+          <td class="text-end">680747</td>
+          <td class="text-end">37441</td>
+          <td class="text-end">40</td>
+          <td class="text-end">$554,293.20</td>
+          <td class="text-end">499,217.24</td>
+          <td class="text-end">332,811.49</td>
+          <td class="text-end">$11,482.00</td>
+          <td class="text-end">$494.23</td>
+          <td class="text-end">$33,329.37</td>
+          <td class="text-end">$568.28</td>
+          <td class="text-end">$600,167.07</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">424,622.78</td>
+          <td class="text-end">$30,769,764.40</td>
+          <td class="text-end">$30,169,597.33</td>
+        </tr>
+        <tr>
+          <td>2036-04-01</td>
+          <td class="text-end">718188</td>
+          <td class="text-end">39500</td>
+          <td class="text-end">43</td>
+          <td class="text-end">$595,865.19</td>
+          <td class="text-end">526,674.12</td>
+          <td class="text-end">351,116.08</td>
+          <td class="text-end">$12,113.50</td>
+          <td class="text-end">$521.41</td>
+          <td class="text-end">$35,162.48</td>
+          <td class="text-end">$599.53</td>
+          <td class="text-end">$644,262.12</td>
+          <td class="text-end">$0.90</td>
+          <td class="text-end">449,829.86</td>
+          <td class="text-end">$32,462,097.60</td>
+          <td class="text-end">$31,817,835.48</td>
+        </tr>
+        <tr>
+          <td>2036-05-01</td>
+          <td class="text-end">757688</td>
+          <td class="text-end">41672</td>
+          <td class="text-end">45</td>
+          <td class="text-end">$623,579.85</td>
+          <td class="text-end">555,640.95</td>
+          <td class="text-end">370,427.30</td>
+          <td class="text-end">$12,779.74</td>
+          <td class="text-end">$550.08</td>
+          <td class="text-end">$37,096.40</td>
+          <td class="text-end">$632.50</td>
+          <td class="text-end">$674,638.59</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">473,724.97</td>
+          <td class="text-end">$34,247,497.60</td>
+          <td class="text-end">$33,572,859.01</td>
+        </tr>
+        <tr>
+          <td>2036-06-01</td>
+          <td class="text-end">799360</td>
+          <td class="text-end">43964</td>
+          <td class="text-end">47</td>
+          <td class="text-end">$651,294.51</td>
+          <td class="text-end">586,200.59</td>
+          <td class="text-end">390,800.39</td>
+          <td class="text-end">$13,482.61</td>
+          <td class="text-end">$580.34</td>
+          <td class="text-end">$39,136.67</td>
+          <td class="text-end">$667.29</td>
+          <td class="text-end">$705,161.42</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">498,679.29</td>
+          <td class="text-end">$36,131,072.00</td>
+          <td class="text-end">$35,425,910.58</td>
+        </tr>
+        <tr>
+          <td>2036-07-01</td>
+          <td class="text-end">843324</td>
+          <td class="text-end">46382</td>
+          <td class="text-end">50</td>
+          <td class="text-end">$692,866.50</td>
+          <td class="text-end">618,441.03</td>
+          <td class="text-end">412,294.02</td>
+          <td class="text-end">$14,224.14</td>
+          <td class="text-end">$612.26</td>
+          <td class="text-end">$41,289.14</td>
+          <td class="text-end">$703.99</td>
+          <td class="text-end">$749,696.04</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">527,067.44</td>
+          <td class="text-end">$38,118,244.80</td>
+          <td class="text-end">$37,368,548.76</td>
+        </tr>
+        <tr>
+          <td>2036-08-01</td>
+          <td class="text-end">889706</td>
+          <td class="text-end">48933</td>
+          <td class="text-end">53</td>
+          <td class="text-end">$734,438.49</td>
+          <td class="text-end">652,454.69</td>
+          <td class="text-end">434,969.79</td>
+          <td class="text-end">$15,006.46</td>
+          <td class="text-end">$645.93</td>
+          <td class="text-end">$43,560.01</td>
+          <td class="text-end">$742.71</td>
+          <td class="text-end">$794,393.59</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">556,634.77</td>
+          <td class="text-end">$40,214,711.20</td>
+          <td class="text-end">$39,420,317.61</td>
+        </tr>
+        <tr>
+          <td>2036-09-01</td>
+          <td class="text-end">938639</td>
+          <td class="text-end">51625</td>
+          <td class="text-end">56</td>
+          <td class="text-end">$776,010.48</td>
+          <td class="text-end">688,339.09</td>
+          <td class="text-end">458,892.72</td>
+          <td class="text-end">$15,831.80</td>
+          <td class="text-end">$681.46</td>
+          <td class="text-end">$45,955.77</td>
+          <td class="text-end">$783.56</td>
+          <td class="text-end">$839,263.06</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">587,446.14</td>
+          <td class="text-end">$42,426,482.80</td>
+          <td class="text-end">$41,587,219.74</td>
+        </tr>
+        <tr>
+          <td>2036-10-01</td>
+          <td class="text-end">990264</td>
+          <td class="text-end">54464</td>
+          <td class="text-end">59</td>
+          <td class="text-end">$817,582.47</td>
+          <td class="text-end">726,197.63</td>
+          <td class="text-end">484,131.75</td>
+          <td class="text-end">$16,702.55</td>
+          <td class="text-end">$718.94</td>
+          <td class="text-end">$48,483.33</td>
+          <td class="text-end">$826.66</td>
+          <td class="text-end">$884,313.93</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">619,570.32</td>
+          <td class="text-end">$44,759,932.80</td>
+          <td class="text-end">$43,875,618.87</td>
+        </tr>
+        <tr>
+          <td>2036-11-01</td>
+          <td class="text-end">1044728</td>
+          <td class="text-end">57460</td>
+          <td class="text-end">62</td>
+          <td class="text-end">$859,154.46</td>
+          <td class="text-end">766,138.12</td>
+          <td class="text-end">510,758.75</td>
+          <td class="text-end">$17,621.18</td>
+          <td class="text-end">$758.48</td>
+          <td class="text-end">$51,149.88</td>
+          <td class="text-end">$872.12</td>
+          <td class="text-end">$929,556.12</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">653,078.99</td>
+          <td class="text-end">$47,221,705.60</td>
+          <td class="text-end">$46,292,149.48</td>
+        </tr>
+        <tr>
+          <td>2036-12-01</td>
+          <td class="text-end">1102188</td>
+          <td class="text-end">60620</td>
+          <td class="text-end">65</td>
+          <td class="text-end">$900,726.45</td>
+          <td class="text-end">808,275.68</td>
+          <td class="text-end">538,850.46</td>
+          <td class="text-end">$18,590.34</td>
+          <td class="text-end">$800.19</td>
+          <td class="text-end">$53,963.12</td>
+          <td class="text-end">$920.09</td>
+          <td class="text-end">$975,000.20</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">688,048.73</td>
+          <td class="text-end">$49,818,897.60</td>
+          <td class="text-end">$48,843,897.40</td>
+        </tr>
+        <tr>
+          <td>2037-01-01</td>
+          <td class="text-end">1162808</td>
+          <td class="text-end">63954</td>
+          <td class="text-end">69</td>
+          <td class="text-end">$956,155.77</td>
+          <td class="text-end">852,730.60</td>
+          <td class="text-end">568,487.07</td>
+          <td class="text-end">$19,612.80</td>
+          <td class="text-end">$844.20</td>
+          <td class="text-end">$56,931.08</td>
+          <td class="text-end">$970.69</td>
+          <td class="text-end">$1,034,514.55</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">726,875.57</td>
+          <td class="text-end">$52,558,921.60</td>
+          <td class="text-end">$51,524,407.05</td>
+        </tr>
+        <tr>
+          <td>2037-02-01</td>
+          <td class="text-end">1226762</td>
+          <td class="text-end">67471</td>
+          <td class="text-end">73</td>
+          <td class="text-end">$1,011,585.09</td>
+          <td class="text-end">899,630.46</td>
+          <td class="text-end">599,753.64</td>
+          <td class="text-end">$20,691.50</td>
+          <td class="text-end">$890.63</td>
+          <td class="text-end">$60,062.27</td>
+          <td class="text-end">$1,024.08</td>
+          <td class="text-end">$1,094,253.57</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">767,328.31</td>
+          <td class="text-end">$55,449,642.40</td>
+          <td class="text-end">$54,355,388.83</td>
+        </tr>
+        <tr>
+          <td>2037-03-01</td>
+          <td class="text-end">1294233</td>
+          <td class="text-end">71182</td>
+          <td class="text-end">76</td>
+          <td class="text-end">$1,053,157.08</td>
+          <td class="text-end">949,109.47</td>
+          <td class="text-end">632,739.64</td>
+          <td class="text-end">$21,829.52</td>
+          <td class="text-end">$939.62</td>
+          <td class="text-end">$63,365.65</td>
+          <td class="text-end">$1,080.40</td>
+          <td class="text-end">$1,140,372.27</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">807,180.10</td>
+          <td class="text-end">$58,499,331.60</td>
+          <td class="text-end">$57,358,959.33</td>
+        </tr>
+        <tr>
+          <td>2037-04-01</td>
+          <td class="text-end">1365415</td>
+          <td class="text-end">75097</td>
+          <td class="text-end">81</td>
+          <td class="text-end">$1,122,443.73</td>
+          <td class="text-end">1,001,309.89</td>
+          <td class="text-end">667,539.93</td>
+          <td class="text-end">$23,030.13</td>
+          <td class="text-end">$991.30</td>
+          <td class="text-end">$66,850.72</td>
+          <td class="text-end">$1,139.82</td>
+          <td class="text-end">$1,214,455.70</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">853,473.80</td>
+          <td class="text-end">$61,716,758.00</td>
+          <td class="text-end">$60,502,302.30</td>
+        </tr>
+        <tr>
+          <td>2037-05-01</td>
+          <td class="text-end">1440512</td>
+          <td class="text-end">79228</td>
+          <td class="text-end">85</td>
+          <td class="text-end">$1,177,873.05</td>
+          <td class="text-end">1,056,381.33</td>
+          <td class="text-end">704,254.22</td>
+          <td class="text-end">$24,296.77</td>
+          <td class="text-end">$1,045.82</td>
+          <td class="text-end">$70,527.47</td>
+          <td class="text-end">$1,202.51</td>
+          <td class="text-end">$1,274,945.62</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">899,360.64</td>
+          <td class="text-end">$65,111,142.40</td>
+          <td class="text-end">$63,836,196.78</td>
+        </tr>
+        <tr>
+          <td>2037-06-01</td>
+          <td class="text-end">1519740</td>
+          <td class="text-end">83585</td>
+          <td class="text-end">90</td>
+          <td class="text-end">$1,247,159.70</td>
+          <td class="text-end">1,114,482.18</td>
+          <td class="text-end">742,988.12</td>
+          <td class="text-end">$25,633.09</td>
+          <td class="text-end">$1,103.34</td>
+          <td class="text-end">$74,406.47</td>
+          <td class="text-end">$1,268.65</td>
+          <td class="text-end">$1,349,571.25</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">949,578.12</td>
+          <td class="text-end">$68,692,248.00</td>
+          <td class="text-end">$67,342,676.75</td>
+        </tr>
+        <tr>
+          <td>2037-07-01</td>
+          <td class="text-end">1603325</td>
+          <td class="text-end">88182</td>
+          <td class="text-end">95</td>
+          <td class="text-end">$1,316,446.35</td>
+          <td class="text-end">1,175,778.19</td>
+          <td class="text-end">783,852.13</td>
+          <td class="text-end">$27,042.90</td>
+          <td class="text-end">$1,164.02</td>
+          <td class="text-end">$78,498.79</td>
+          <td class="text-end">$1,338.43</td>
+          <td class="text-end">$1,424,490.49</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">1,001,920.38</td>
+          <td class="text-end">$72,470,290.00</td>
+          <td class="text-end">$71,045,799.51</td>
+        </tr>
+        <tr>
+          <td>2037-08-01</td>
+          <td class="text-end">1691507</td>
+          <td class="text-end">93032</td>
+          <td class="text-end">100</td>
+          <td class="text-end">$1,385,733.00</td>
+          <td class="text-end">1,240,445.35</td>
+          <td class="text-end">826,963.57</td>
+          <td class="text-end">$28,530.24</td>
+          <td class="text-end">$1,228.04</td>
+          <td class="text-end">$82,816.18</td>
+          <td class="text-end">$1,412.04</td>
+          <td class="text-end">$1,499,719.51</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">1,056,504.46</td>
+          <td class="text-end">$76,456,116.40</td>
+          <td class="text-end">$74,956,396.89</td>
+        </tr>
+        <tr>
+          <td>2037-09-01</td>
+          <td class="text-end">1784539</td>
+          <td class="text-end">98149</td>
+          <td class="text-end">105</td>
+          <td class="text-end">$1,455,019.65</td>
+          <td class="text-end">1,308,669.19</td>
+          <td class="text-end">872,446.13</td>
+          <td class="text-end">$30,099.39</td>
+          <td class="text-end">$1,295.58</td>
+          <td class="text-end">$87,371.03</td>
+          <td class="text-end">$1,489.70</td>
+          <td class="text-end">$1,575,275.36</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,113,453.73</td>
+          <td class="text-end">$80,661,162.80</td>
+          <td class="text-end">$79,085,887.44</td>
+        </tr>
+        <tr>
+          <td>2037-10-01</td>
+          <td class="text-end">1882688</td>
+          <td class="text-end">103547</td>
+          <td class="text-end">111</td>
+          <td class="text-end">$1,538,163.63</td>
+          <td class="text-end">1,380,645.53</td>
+          <td class="text-end">920,430.35</td>
+          <td class="text-end">$31,754.85</td>
+          <td class="text-end">$1,366.84</td>
+          <td class="text-end">$92,176.40</td>
+          <td class="text-end">$1,571.64</td>
+          <td class="text-end">$1,665,033.36</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,175,214.49</td>
+          <td class="text-end">$85,097,497.60</td>
+          <td class="text-end">$83,432,464.24</td>
+        </tr>
+        <tr>
+          <td>2037-11-01</td>
+          <td class="text-end">1986235</td>
+          <td class="text-end">109242</td>
+          <td class="text-end">117</td>
+          <td class="text-end">$1,621,307.61</td>
+          <td class="text-end">1,456,580.42</td>
+          <td class="text-end">971,053.61</td>
+          <td class="text-end">$33,501.35</td>
+          <td class="text-end">$1,442.01</td>
+          <td class="text-end">$97,246.07</td>
+          <td class="text-end">$1,658.07</td>
+          <td class="text-end">$1,755,155.11</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,239,607.69</td>
+          <td class="text-end">$89,777,822.00</td>
+          <td class="text-end">$88,022,666.89</td>
+        </tr>
+        <tr>
+          <td>2037-12-01</td>
+          <td class="text-end">2095477</td>
+          <td class="text-end">115251</td>
+          <td class="text-end">124</td>
+          <td class="text-end">$1,718,308.92</td>
+          <td class="text-end">1,536,691.66</td>
+          <td class="text-end">1,024,461.11</td>
+          <td class="text-end">$35,343.91</td>
+          <td class="text-end">$1,521.32</td>
+          <td class="text-end">$102,594.55</td>
+          <td class="text-end">$1,749.27</td>
+          <td class="text-end">$1,859,517.97</td>
+          <td class="text-end">$0.89</td>
+          <td class="text-end">1,309,094.25</td>
+          <td class="text-end">$94,715,560.40</td>
+          <td class="text-end">$92,856,042.43</td>
+        </tr>
+        <tr>
+          <td>2038-01-01</td>
+          <td class="text-end">2210728</td>
+          <td class="text-end">121590</td>
+          <td class="text-end">130</td>
+          <td class="text-end">$1,801,452.90</td>
+          <td class="text-end">1,621,209.53</td>
+          <td class="text-end">1,080,806.35</td>
+          <td class="text-end">$37,287.82</td>
+          <td class="text-end">$1,605.00</td>
+          <td class="text-end">$108,237.24</td>
+          <td class="text-end">$1,845.48</td>
+          <td class="text-end">$1,950,428.44</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,379,195.13</td>
+          <td class="text-end">$99,924,905.60</td>
+          <td class="text-end">$97,974,477.16</td>
+        </tr>
+        <tr>
+          <td>2038-02-01</td>
+          <td class="text-end">2332318</td>
+          <td class="text-end">128277</td>
+          <td class="text-end">137</td>
+          <td class="text-end">$1,898,454.21</td>
+          <td class="text-end">1,710,376.02</td>
+          <td class="text-end">1,140,250.68</td>
+          <td class="text-end">$39,338.65</td>
+          <td class="text-end">$1,693.27</td>
+          <td class="text-end">$114,190.29</td>
+          <td class="text-end">$1,946.98</td>
+          <td class="text-end">$2,055,623.40</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,454,703.43</td>
+          <td class="text-end">$105,420,773.60</td>
+          <td class="text-end">$103,365,150.20</td>
+        </tr>
+        <tr>
+          <td>2038-03-01</td>
+          <td class="text-end">2460595</td>
+          <td class="text-end">135332</td>
+          <td class="text-end">145</td>
+          <td class="text-end">$2,009,312.85</td>
+          <td class="text-end">1,804,446.35</td>
+          <td class="text-end">1,202,964.23</td>
+          <td class="text-end">$41,502.27</td>
+          <td class="text-end">$1,786.40</td>
+          <td class="text-end">$120,470.73</td>
+          <td class="text-end">$2,054.06</td>
+          <td class="text-end">$2,175,126.31</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,535,788.85</td>
+          <td class="text-end">$111,218,894.00</td>
+          <td class="text-end">$109,043,767.69</td>
+        </tr>
+        <tr>
+          <td>2038-04-01</td>
+          <td class="text-end">2595927</td>
+          <td class="text-end">142775</td>
+          <td class="text-end">153</td>
+          <td class="text-end">$2,120,171.49</td>
+          <td class="text-end">1,903,690.36</td>
+          <td class="text-end">1,269,126.91</td>
+          <td class="text-end">$43,784.88</td>
+          <td class="text-end">$1,884.65</td>
+          <td class="text-end">$127,096.59</td>
+          <td class="text-end">$2,167.03</td>
+          <td class="text-end">$2,295,104.64</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,620,314.79</td>
+          <td class="text-end">$117,335,900.40</td>
+          <td class="text-end">$115,040,795.76</td>
+        </tr>
+        <tr>
+          <td>2038-05-01</td>
+          <td class="text-end">2738702</td>
+          <td class="text-end">150628</td>
+          <td class="text-end">161</td>
+          <td class="text-end">$2,231,030.13</td>
+          <td class="text-end">2,008,392.61</td>
+          <td class="text-end">1,338,928.41</td>
+          <td class="text-end">$46,193.03</td>
+          <td class="text-end">$1,988.31</td>
+          <td class="text-end">$134,086.85</td>
+          <td class="text-end">$2,286.22</td>
+          <td class="text-end">$2,415,584.54</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,708,470.45</td>
+          <td class="text-end">$123,789,330.40</td>
+          <td class="text-end">$121,373,745.86</td>
+        </tr>
+        <tr>
+          <td>2038-06-01</td>
+          <td class="text-end">2889330</td>
+          <td class="text-end">158913</td>
+          <td class="text-end">170</td>
+          <td class="text-end">$2,355,746.10</td>
+          <td class="text-end">2,118,853.76</td>
+          <td class="text-end">1,412,569.17</td>
+          <td class="text-end">$48,733.64</td>
+          <td class="text-end">$2,097.67</td>
+          <td class="text-end">$141,461.60</td>
+          <td class="text-end">$2,411.96</td>
+          <td class="text-end">$2,550,450.96</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,802,771.86</td>
+          <td class="text-end">$130,597,716.00</td>
+          <td class="text-end">$128,047,265.04</td>
+        </tr>
+        <tr>
+          <td>2038-07-01</td>
+          <td class="text-end">3048243</td>
+          <td class="text-end">167653</td>
+          <td class="text-end">179</td>
+          <td class="text-end">$2,480,462.07</td>
+          <td class="text-end">2,235,390.60</td>
+          <td class="text-end">1,490,260.40</td>
+          <td class="text-end">$51,413.98</td>
+          <td class="text-end">$2,213.04</td>
+          <td class="text-end">$149,241.98</td>
+          <td class="text-end">$2,544.62</td>
+          <td class="text-end">$2,685,875.69</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">1,901,113.61</td>
+          <td class="text-end">$137,780,583.60</td>
+          <td class="text-end">$135,094,707.91</td>
+        </tr>
+        <tr>
+          <td>2038-08-01</td>
+          <td class="text-end">3215896</td>
+          <td class="text-end">176874</td>
+          <td class="text-end">189</td>
+          <td class="text-end">$2,619,035.37</td>
+          <td class="text-end">2,358,336.82</td>
+          <td class="text-end">1,572,224.55</td>
+          <td class="text-end">$54,241.75</td>
+          <td class="text-end">$2,334.75</td>
+          <td class="text-end">$157,450.27</td>
+          <td class="text-end">$2,684.57</td>
+          <td class="text-end">$2,835,746.71</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,006,033.67</td>
+          <td class="text-end">$145,358,499.20</td>
+          <td class="text-end">$142,522,752.49</td>
+        </tr>
+        <tr>
+          <td>2038-09-01</td>
+          <td class="text-end">3392770</td>
+          <td class="text-end">186602</td>
+          <td class="text-end">200</td>
+          <td class="text-end">$2,771,466.00</td>
+          <td class="text-end">2,488,045.14</td>
+          <td class="text-end">1,658,696.76</td>
+          <td class="text-end">$57,225.04</td>
+          <td class="text-end">$2,463.16</td>
+          <td class="text-end">$166,110.02</td>
+          <td class="text-end">$2,832.23</td>
+          <td class="text-end">$3,000,096.45</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,117,766.62</td>
+          <td class="text-end">$153,353,204.00</td>
+          <td class="text-end">$150,353,107.55</td>
+        </tr>
+        <tr>
+          <td>2038-10-01</td>
+          <td class="text-end">3579372</td>
+          <td class="text-end">-53690</td>
+          <td class="text-end">211</td>
+          <td class="text-end">$2,923,896.63</td>
+          <td class="text-end">2,624,887.36</td>
+          <td class="text-end">1,749,924.91</td>
+          <td class="text-end">$60,372.41</td>
+          <td class="text-end">$2,598.64</td>
+          <td class="text-end">$175,246.05</td>
+          <td class="text-end">$2,988.00</td>
+          <td class="text-end">$3,165,101.73</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,234,243.61</td>
+          <td class="text-end">$161,787,614.40</td>
+          <td class="text-end">$158,622,512.67</td>
+        </tr>
+        <tr>
+          <td>2038-11-01</td>
+          <td class="text-end">3525682</td>
+          <td class="text-end">-52885</td>
+          <td class="text-end">207</td>
+          <td class="text-end">$2,868,467.31</td>
+          <td class="text-end">2,585,514.48</td>
+          <td class="text-end">1,723,676.32</td>
+          <td class="text-end">$59,466.83</td>
+          <td class="text-end">$2,559.66</td>
+          <td class="text-end">$172,617.39</td>
+          <td class="text-end">$2,943.18</td>
+          <td class="text-end">$3,106,054.37</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,198,796.31</td>
+          <td class="text-end">$159,360,826.40</td>
+          <td class="text-end">$156,254,772.03</td>
+        </tr>
+        <tr>
+          <td>2038-12-01</td>
+          <td class="text-end">3472797</td>
+          <td class="text-end">191003</td>
+          <td class="text-end">204</td>
+          <td class="text-end">$2,826,895.32</td>
+          <td class="text-end">2,546,731.93</td>
+          <td class="text-end">1,697,821.29</td>
+          <td class="text-end">$58,574.83</td>
+          <td class="text-end">$2,521.26</td>
+          <td class="text-end">$170,028.14</td>
+          <td class="text-end">$2,899.03</td>
+          <td class="text-end">$3,060,918.59</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,166,057.67</td>
+          <td class="text-end">$156,970,424.40</td>
+          <td class="text-end">$153,909,505.81</td>
+        </tr>
+        <tr>
+          <td>2039-01-01</td>
+          <td class="text-end">3663800</td>
+          <td class="text-end">-54957</td>
+          <td class="text-end">216</td>
+          <td class="text-end">$2,993,183.28</td>
+          <td class="text-end">2,686,801.57</td>
+          <td class="text-end">1,791,201.05</td>
+          <td class="text-end">$61,796.44</td>
+          <td class="text-end">$2,659.93</td>
+          <td class="text-end">$179,379.65</td>
+          <td class="text-end">$3,058.48</td>
+          <td class="text-end">$3,240,077.77</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,286,996.98</td>
+          <td class="text-end">$165,603,760.00</td>
+          <td class="text-end">$162,363,682.23</td>
+        </tr>
+        <tr>
+          <td>2039-02-01</td>
+          <td class="text-end">3608843</td>
+          <td class="text-end">-54132</td>
+          <td class="text-end">212</td>
+          <td class="text-end">$2,937,753.96</td>
+          <td class="text-end">2,646,499.55</td>
+          <td class="text-end">1,764,333.03</td>
+          <td class="text-end">$60,869.49</td>
+          <td class="text-end">$2,620.03</td>
+          <td class="text-end">$176,688.95</td>
+          <td class="text-end">$3,012.60</td>
+          <td class="text-end">$3,180,945.04</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,250,931.80</td>
+          <td class="text-end">$163,119,703.60</td>
+          <td class="text-end">$159,938,758.56</td>
+        </tr>
+        <tr>
+          <td>2039-03-01</td>
+          <td class="text-end">3554711</td>
+          <td class="text-end">-53320</td>
+          <td class="text-end">209</td>
+          <td class="text-end">$2,896,181.97</td>
+          <td class="text-end">2,606,802.53</td>
+          <td class="text-end">1,737,868.35</td>
+          <td class="text-end">$59,956.46</td>
+          <td class="text-end">$2,580.73</td>
+          <td class="text-end">$174,038.65</td>
+          <td class="text-end">$2,967.41</td>
+          <td class="text-end">$3,135,725.22</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,217,585.03</td>
+          <td class="text-end">$160,672,937.20</td>
+          <td class="text-end">$157,537,211.98</td>
+        </tr>
+        <tr>
+          <td>2039-04-01</td>
+          <td class="text-end">3501391</td>
+          <td class="text-end">-52520</td>
+          <td class="text-end">206</td>
+          <td class="text-end">$2,854,609.98</td>
+          <td class="text-end">2,567,700.98</td>
+          <td class="text-end">1,711,800.65</td>
+          <td class="text-end">$59,057.12</td>
+          <td class="text-end">$2,542.02</td>
+          <td class="text-end">$171,428.10</td>
+          <td class="text-end">$2,922.90</td>
+          <td class="text-end">$3,090,560.13</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,184,634.25</td>
+          <td class="text-end">$158,262,873.20</td>
+          <td class="text-end">$155,172,313.07</td>
+        </tr>
+        <tr>
+          <td>2039-05-01</td>
+          <td class="text-end">3448871</td>
+          <td class="text-end">189687</td>
+          <td class="text-end">203</td>
+          <td class="text-end">$2,813,037.99</td>
+          <td class="text-end">2,529,186.10</td>
+          <td class="text-end">1,686,124.07</td>
+          <td class="text-end">$58,171.28</td>
+          <td class="text-end">$2,503.89</td>
+          <td class="text-end">$168,856.72</td>
+          <td class="text-end">$2,879.06</td>
+          <td class="text-end">$3,045,448.95</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,152,073.61</td>
+          <td class="text-end">$155,888,969.20</td>
+          <td class="text-end">$152,843,520.25</td>
+        </tr>
+        <tr>
+          <td>2039-06-01</td>
+          <td class="text-end">3638558</td>
+          <td class="text-end">-54578</td>
+          <td class="text-end">214</td>
+          <td class="text-end">$2,965,468.62</td>
+          <td class="text-end">2,668,290.67</td>
+          <td class="text-end">1,778,860.45</td>
+          <td class="text-end">$61,370.69</td>
+          <td class="text-end">$2,641.61</td>
+          <td class="text-end">$178,143.80</td>
+          <td class="text-end">$3,037.40</td>
+          <td class="text-end">$3,210,662.12</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,270,055.06</td>
+          <td class="text-end">$164,462,821.60</td>
+          <td class="text-end">$161,252,159.48</td>
+        </tr>
+        <tr>
+          <td>2039-07-01</td>
+          <td class="text-end">3583980</td>
+          <td class="text-end">-53759</td>
+          <td class="text-end">211</td>
+          <td class="text-end">$2,923,896.63</td>
+          <td class="text-end">2,628,266.58</td>
+          <td class="text-end">1,752,177.72</td>
+          <td class="text-end">$60,450.13</td>
+          <td class="text-end">$2,601.98</td>
+          <td class="text-end">$175,471.66</td>
+          <td class="text-end">$2,991.84</td>
+          <td class="text-end">$3,165,412.25</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,236,490.79</td>
+          <td class="text-end">$161,995,896.00</td>
+          <td class="text-end">$158,830,483.75</td>
+        </tr>
+        <tr>
+          <td>2039-08-01</td>
+          <td class="text-end">3530221</td>
+          <td class="text-end">-52953</td>
+          <td class="text-end">208</td>
+          <td class="text-end">$2,882,324.64</td>
+          <td class="text-end">2,588,843.10</td>
+          <td class="text-end">1,725,895.40</td>
+          <td class="text-end">$59,543.39</td>
+          <td class="text-end">$2,562.95</td>
+          <td class="text-end">$172,839.62</td>
+          <td class="text-end">$2,946.97</td>
+          <td class="text-end">$3,120,217.57</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,203,325.92</td>
+          <td class="text-end">$159,565,989.20</td>
+          <td class="text-end">$156,445,771.63</td>
+        </tr>
+        <tr>
+          <td>2039-09-01</td>
+          <td class="text-end">3477268</td>
+          <td class="text-end">191249</td>
+          <td class="text-end">205</td>
+          <td class="text-end">$2,840,752.65</td>
+          <td class="text-end">2,550,010.68</td>
+          <td class="text-end">1,700,007.12</td>
+          <td class="text-end">$58,650.25</td>
+          <td class="text-end">$2,524.51</td>
+          <td class="text-end">$170,247.04</td>
+          <td class="text-end">$2,902.76</td>
+          <td class="text-end">$3,075,077.21</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,170,554.12</td>
+          <td class="text-end">$157,172,513.60</td>
+          <td class="text-end">$154,097,436.39</td>
+        </tr>
+        <tr>
+          <td>2039-10-01</td>
+          <td class="text-end">3668517</td>
+          <td class="text-end">-55027</td>
+          <td class="text-end">216</td>
+          <td class="text-end">$2,993,183.28</td>
+          <td class="text-end">2,690,260.73</td>
+          <td class="text-end">1,793,507.15</td>
+          <td class="text-end">$61,876.00</td>
+          <td class="text-end">$2,663.36</td>
+          <td class="text-end">$179,610.59</td>
+          <td class="text-end">$3,062.41</td>
+          <td class="text-end">$3,240,395.64</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,289,297.31</td>
+          <td class="text-end">$165,816,968.40</td>
+          <td class="text-end">$162,576,572.76</td>
+        </tr>
+        <tr>
+          <td>2039-11-01</td>
+          <td class="text-end">3613490</td>
+          <td class="text-end">-54202</td>
+          <td class="text-end">213</td>
+          <td class="text-end">$2,951,611.29</td>
+          <td class="text-end">2,649,907.37</td>
+          <td class="text-end">1,766,604.91</td>
+          <td class="text-end">$60,947.87</td>
+          <td class="text-end">$2,623.41</td>
+          <td class="text-end">$176,916.47</td>
+          <td class="text-end">$3,016.48</td>
+          <td class="text-end">$3,195,115.52</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,255,514.08</td>
+          <td class="text-end">$163,329,748.00</td>
+          <td class="text-end">$160,134,632.48</td>
+        </tr>
+        <tr>
+          <td>2039-12-01</td>
+          <td class="text-end">3559288</td>
+          <td class="text-end">-53389</td>
+          <td class="text-end">209</td>
+          <td class="text-end">$2,896,181.97</td>
+          <td class="text-end">2,610,159.02</td>
+          <td class="text-end">1,740,106.01</td>
+          <td class="text-end">$60,033.66</td>
+          <td class="text-end">$2,584.06</td>
+          <td class="text-end">$174,262.74</td>
+          <td class="text-end">$2,971.23</td>
+          <td class="text-end">$3,136,033.66</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,219,817.09</td>
+          <td class="text-end">$160,879,817.60</td>
+          <td class="text-end">$157,743,783.94</td>
+        </tr>
+        <tr>
+          <td>2040-01-01</td>
+          <td class="text-end">3505899</td>
+          <td class="text-end">-52588</td>
+          <td class="text-end">206</td>
+          <td class="text-end">$2,854,609.98</td>
+          <td class="text-end">2,571,006.87</td>
+          <td class="text-end">1,714,004.58</td>
+          <td class="text-end">$59,133.16</td>
+          <td class="text-end">$2,545.30</td>
+          <td class="text-end">$171,648.82</td>
+          <td class="text-end">$2,926.66</td>
+          <td class="text-end">$3,090,863.91</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,186,832.66</td>
+          <td class="text-end">$158,466,634.80</td>
+          <td class="text-end">$155,375,770.89</td>
+        </tr>
+        <tr>
+          <td>2040-02-01</td>
+          <td class="text-end">3453311</td>
+          <td class="text-end">189932</td>
+          <td class="text-end">203</td>
+          <td class="text-end">$2,813,037.99</td>
+          <td class="text-end">2,532,442.12</td>
+          <td class="text-end">1,688,294.75</td>
+          <td class="text-end">$58,246.17</td>
+          <td class="text-end">$2,507.12</td>
+          <td class="text-end">$169,074.11</td>
+          <td class="text-end">$2,882.76</td>
+          <td class="text-end">$3,045,748.15</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,154,238.86</td>
+          <td class="text-end">$156,089,657.20</td>
+          <td class="text-end">$153,043,909.05</td>
+        </tr>
+        <tr>
+          <td>2040-03-01</td>
+          <td class="text-end">3643243</td>
+          <td class="text-end">-54648</td>
+          <td class="text-end">214</td>
+          <td class="text-end">$2,965,468.62</td>
+          <td class="text-end">2,671,726.36</td>
+          <td class="text-end">1,781,150.91</td>
+          <td class="text-end">$61,449.71</td>
+          <td class="text-end">$2,645.01</td>
+          <td class="text-end">$178,373.18</td>
+          <td class="text-end">$3,041.32</td>
+          <td class="text-end">$3,210,977.83</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,272,339.79</td>
+          <td class="text-end">$164,674,583.60</td>
+          <td class="text-end">$161,463,605.77</td>
+        </tr>
+        <tr>
+          <td>2040-04-01</td>
+          <td class="text-end">3588595</td>
+          <td class="text-end">-53828</td>
+          <td class="text-end">211</td>
+          <td class="text-end">$2,923,896.63</td>
+          <td class="text-end">2,631,650.94</td>
+          <td class="text-end">1,754,433.96</td>
+          <td class="text-end">$60,527.97</td>
+          <td class="text-end">$2,605.33</td>
+          <td class="text-end">$175,697.61</td>
+          <td class="text-end">$2,995.70</td>
+          <td class="text-end">$3,165,723.24</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,238,741.39</td>
+          <td class="text-end">$162,204,494.00</td>
+          <td class="text-end">$159,038,770.76</td>
+        </tr>
+        <tr>
+          <td>2040-05-01</td>
+          <td class="text-end">3534767</td>
+          <td class="text-end">-53021</td>
+          <td class="text-end">208</td>
+          <td class="text-end">$2,882,324.64</td>
+          <td class="text-end">2,592,176.85</td>
+          <td class="text-end">1,728,117.90</td>
+          <td class="text-end">$59,620.07</td>
+          <td class="text-end">$2,566.26</td>
+          <td class="text-end">$173,062.19</td>
+          <td class="text-end">$2,950.76</td>
+          <td class="text-end">$3,120,523.92</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,205,542.87</td>
+          <td class="text-end">$159,771,468.40</td>
+          <td class="text-end">$156,650,944.48</td>
+        </tr>
+        <tr>
+          <td>2040-06-01</td>
+          <td class="text-end">3481746</td>
+          <td class="text-end">191496</td>
+          <td class="text-end">205</td>
+          <td class="text-end">$2,840,752.65</td>
+          <td class="text-end">2,553,294.57</td>
+          <td class="text-end">1,702,196.38</td>
+          <td class="text-end">$58,725.78</td>
+          <td class="text-end">$2,527.76</td>
+          <td class="text-end">$170,466.28</td>
+          <td class="text-end">$2,906.50</td>
+          <td class="text-end">$3,075,378.97</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,172,737.90</td>
+          <td class="text-end">$157,374,919.20</td>
+          <td class="text-end">$154,299,540.23</td>
+        </tr>
+        <tr>
+          <td>2040-07-01</td>
+          <td class="text-end">3673242</td>
+          <td class="text-end">-55098</td>
+          <td class="text-end">216</td>
+          <td class="text-end">$2,993,183.28</td>
+          <td class="text-end">2,693,725.75</td>
+          <td class="text-end">1,795,817.16</td>
+          <td class="text-end">$61,955.69</td>
+          <td class="text-end">$2,666.79</td>
+          <td class="text-end">$179,841.93</td>
+          <td class="text-end">$3,066.36</td>
+          <td class="text-end">$3,240,714.05</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,291,601.55</td>
+          <td class="text-end">$166,030,538.40</td>
+          <td class="text-end">$162,789,824.35</td>
+        </tr>
+        <tr>
+          <td>2040-08-01</td>
+          <td class="text-end">3618144</td>
+          <td class="text-end">-54272</td>
+          <td class="text-end">213</td>
+          <td class="text-end">$2,951,611.29</td>
+          <td class="text-end">2,653,320.32</td>
+          <td class="text-end">1,768,880.21</td>
+          <td class="text-end">$61,026.37</td>
+          <td class="text-end">$2,626.79</td>
+          <td class="text-end">$177,144.33</td>
+          <td class="text-end">$3,020.36</td>
+          <td class="text-end">$3,195,429.14</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,257,783.69</td>
+          <td class="text-end">$163,540,108.80</td>
+          <td class="text-end">$160,344,679.66</td>
+        </tr>
+        <tr>
+          <td>2040-09-01</td>
+          <td class="text-end">3563872</td>
+          <td class="text-end">-53458</td>
+          <td class="text-end">210</td>
+          <td class="text-end">$2,910,039.30</td>
+          <td class="text-end">2,613,520.63</td>
+          <td class="text-end">1,742,347.09</td>
+          <td class="text-end">$60,110.97</td>
+          <td class="text-end">$2,587.39</td>
+          <td class="text-end">$174,487.17</td>
+          <td class="text-end">$2,975.06</td>
+          <td class="text-end">$3,150,199.89</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,224,368.65</td>
+          <td class="text-end">$161,087,014.40</td>
+          <td class="text-end">$157,936,814.51</td>
+        </tr>
+        <tr>
+          <td>2040-10-01</td>
+          <td class="text-end">3510414</td>
+          <td class="text-end">-52656</td>
+          <td class="text-end">207</td>
+          <td class="text-end">$2,868,467.31</td>
+          <td class="text-end">2,574,317.88</td>
+          <td class="text-end">1,716,211.92</td>
+          <td class="text-end">$59,209.31</td>
+          <td class="text-end">$2,548.57</td>
+          <td class="text-end">$171,869.87</td>
+          <td class="text-end">$2,930.43</td>
+          <td class="text-end">$3,105,025.50</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,191,350.57</td>
+          <td class="text-end">$158,670,712.80</td>
+          <td class="text-end">$155,565,687.30</td>
+        </tr>
+        <tr>
+          <td>2040-11-01</td>
+          <td class="text-end">3457758</td>
+          <td class="text-end">190176</td>
+          <td class="text-end">203</td>
+          <td class="text-end">$2,813,037.99</td>
+          <td class="text-end">2,535,703.27</td>
+          <td class="text-end">1,690,468.85</td>
+          <td class="text-end">$58,321.18</td>
+          <td class="text-end">$2,510.35</td>
+          <td class="text-end">$169,291.83</td>
+          <td class="text-end">$2,886.48</td>
+          <td class="text-end">$3,046,047.82</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,156,407.52</td>
+          <td class="text-end">$156,290,661.60</td>
+          <td class="text-end">$153,244,613.78</td>
+        </tr>
+        <tr>
+          <td>2040-12-01</td>
+          <td class="text-end">3647934</td>
+          <td class="text-end">-54719</td>
+          <td class="text-end">215</td>
+          <td class="text-end">$2,979,325.95</td>
+          <td class="text-end">2,675,166.44</td>
+          <td class="text-end">1,783,444.30</td>
+          <td class="text-end">$61,528.83</td>
+          <td class="text-end">$2,648.41</td>
+          <td class="text-end">$178,602.85</td>
+          <td class="text-end">$3,045.23</td>
+          <td class="text-end">$3,225,151.27</td>
+          <td class="text-end">$0.88</td>
+          <td class="text-end">2,276,943.53</td>
+          <td class="text-end">$164,886,616.80</td>
+          <td class="text-end">$161,661,465.53</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCoeficients" aria-labelledby="offcanvasCoeficients">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasCoeficients">Logistic Growth Model</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>    
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          The coefficients and values used in the multiple equations are listed below:
+        </div>
+        <div class="dropdown mt-3">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="text-end">No.</th>
+              <th scope="col" class="text-end">C</th>
+              <th scope="col">V</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-end">1.</td>
+              <td class="text-end">K</td>
+              <td>3500000</td>
+            </tr>
+            <tr>
+              <td class="text-end">2.</td>
+              <td class="text-end">r</td>
+              <td>0.07</td>
+            </tr>
+            <tr>
+              <td class="text-end">3.</td>
+              <td class="text-end">d</td>
+              <td>0.015</td>
+            </tr>
+            <tr>
+              <td class="text-end">4.</td>
+              <td class="text-end">t</td>
+              <td>180</td>
+            </tr>
+            <tr>
+              <td class="text-end">5.</td>
+              <td class="text-end">p</td>
+              <td>111.07</td>
+            </tr>
+            <tr>
+              <td class="text-end">6.</td>
+              <td class="text-end">u</td>
+              <td>0.63</td>
+            </tr>
+            <tr>
+              <td class="text-end">7.</td>
+              <td class="text-end">m</td>
+              <td>2592000</td>
+            </tr>
+            <tr>
+              <td class="text-end">8.</td>
+              <td class="text-end">f</td>
+              <td>2880</td>
+            </tr>
+            <tr>
+              <td class="text-end">9.</td>
+              <td class="text-end">z</td>
+              <td>89</td>
+            </tr>
+            <tr>
+              <td class="text-end">10.</td>
+              <td class="text-end">g</td>
+              <td>1048576</td>
+            </tr>
+            <tr>
+              <td class="text-end">11.</td>
+              <td class="text-end">h</td>
+              <td>345</td>
+            </tr>
+            <tr>
+              <td class="text-end">12.</td>
+              <td class="text-end">n1</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td class="text-end">13.</td>
+              <td class="text-end">n2</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td class="text-end">14.</td>
+              <td class="text-end">n3</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td class="text-end">15.</td>
+              <td class="text-end">e1</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td class="text-end">16.</td>
+              <td class="text-end">e2</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td class="text-end">17.</td>
+              <td class="text-end">c1</td>
+              <td>13857.33</td>
+            </tr>
+            <tr>
+              <td class="text-end">18.</td>
+              <td class="text-end">c2</td>
+              <td>0.023</td>
+            </tr>
+            <tr>
+              <td class="text-end">19.</td>
+              <td class="text-end">c3</td>
+              <td>0.00099</td>
+            </tr>
+            <tr>
+              <td class="text-end">20.</td>
+              <td class="text-end">c4</td>
+              <td>0.000005</td>
+            </tr>
+            <tr>
+              <td class="text-end">21.</td>
+              <td class="text-end">c5</td>
+              <td>0.0000004</td>
+            </tr>
+            <tr>
+              <td class="text-end">22.</td>
+              <td class="text-end">c6</td>
+              <td>0.00005</td>
+            </tr>
+            <tr>
+              <td class="text-end">23.</td>
+              <td class="text-end">b1</td>
+              <td>2316.083</td>
+            </tr>
+            <tr>
+              <td class="text-end">24.</td>
+              <td class="text-end">b2</td>
+              <td>0.615</td>
+            </tr>
+            <tr>
+              <td class="text-end">25.</td>
+              <td class="text-end">b3</td>
+              <td>0.075</td>
+            </tr>
+            <tr>
+              <td class="text-end">26.</td>
+              <td class="text-end">j1</td>
+              <td>0.39</td>
+            </tr>
+            <tr>
+              <td class="text-end">27.</td>
+              <td class="text-end">j2</td>
+              <td>0.34</td>
+            </tr>
+            <tr>
+              <td class="text-end">28.</td>
+              <td class="text-end">j3</td>
+              <td>0.27</td>
+            </tr>
+            <tr>
+              <td class="text-end">29.</td>
+              <td class="text-end">v1</td>
+              <td>75.00</td>
+            </tr>
+            <tr>
+              <td class="text-end">30.</td>
+              <td class="text-end">v2</td>
+              <td>35.00</td>
+            </tr>
+            <tr>
+              <td class="text-end">31.</td>
+              <td class="text-end">v3</td>
+              <td>15.00</td>
+            </tr>
+            <tr>
+              <td class="text-end">32.</td>
+              <td class="text-end">year</td>
+              <td>2026</td>
+            </tr>
+            <tr>
+              <td class="text-end">33.</td>
+              <td class="text-end">month</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td class="text-end">34.</td>
+              <td class="text-end">day</td>
+              <td>1</td>
+            </tr>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </body>
+</html>
