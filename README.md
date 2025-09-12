@@ -11,15 +11,11 @@ $$\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-dN$$
 
 <br>
 
-The CardioAI Team estimates the monthly computing utilization based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated `g6e.48xlarge` instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
+The Team estimates the monthly computing utilization of CardioAI based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated `g6e.48xlarge` instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
 
+Data storage and archive costs are estimated based on compressed electrocardiographic files of 89 KB in size (*z*) and a bundle containing 345 electrocardiogram files (*h*) for the archive. The model accounts for multiple data storage replicas (*e1*) and archive replicas (*e2*) in addition to estimating the overall cost of data operations (*n1*, *n2*, *n3*) in S3 Standard and S3 Glacier Deep Archive. The carbon footprint is estimated based on publicly available information from different sources and is strictly related to the computing unit (*b1*), storage (*b2*), and archive service used (*b3*), which helps to derive total estimates or more granular estimates by infrastructure tier.
 
-
-
-
-
-
-
+We are currently modeling a Basic, Standard, and Premium plan at different adoption rates (*j1*, *j2*, *j3*) and rates (*v1*, *v2*, *v3*). However, additional plans can be added at any time without affecting other parts of the system.
 
 xxx
 
@@ -27,7 +23,7 @@ The utility has been written to achieve the intended functionality using multipl
 
 ## Coefficients
 
-The model we are proposing has 34 coefficients that can be adjusted to perform various business growth experiments, including defining multiple rate plans and modeling those simultaneously to analyze profitability under different growth conditions.
+The coefficients below can be adjusted to perform various business growth experiments, including defining multiple rate plans and modeling those simultaneously to analyze profitability under different growth conditions.
 
 | No.  | Coefficient | Value         | Description                                                      |
 | ---: | ---:        | :---          | :---                                                             |
