@@ -71,6 +71,10 @@ The model generates the metrics below for each month (t) in the forecast beginni
 | 15.  | Gross Revenue       | $45,200.00   | grossRevenue              |
 | 16.  | Net Revenue         | $17,417.95   | netRevenue                |
 
+## The Logistic Growth Model
+
+The CardioAI Team estimates the monthly computing utilization based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (p) and AI inference, with a maximum computing unit utilization rate (u) of 63%. The estimations are directly associated with AWS's high-performance, GPU-accelerated Amazon EC2 g6e.48xlarge instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
+
 ## The Team
 
 The team members of the CardioAI Impact Project are listed below in alphabetical order:
