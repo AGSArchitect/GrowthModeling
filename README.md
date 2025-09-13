@@ -27,7 +27,7 @@ $$\frac{dN}{dt}=Nj_1v_1+Nj_2v_2+Nj_3v_3+Nj_nv_n$$
 
 The utility has been written to achieve the intended functionality using multiple approaches in the fastest way possible, and does not claim to be either logically or functionally correct. Lastly, the decision to concentrate on Solution Architecture instead of software development as part of the Impact Project has allocated more attention to other areas of concentration.
 
-## Coefficients
+## 1. Coefficients
 
 The proposed model has 34 coefficients, all of which can be individually adjusted to create various business growth conditions. Some of the conditions can include using various computing units, adjusting the desired utilization, modifying the number of data replicas, or optimizing the cost of data operations.
 
@@ -68,7 +68,7 @@ The proposed model has 34 coefficients, all of which can be individually adjuste
 | 33.  | month       | 1             | Forecast initial month                                           |
 | 34.  | day         | 1             | Forecast initial day                                             |
 
-## Metrics
+## 2. Metrics
 
 The model outputs the following metrics for each month (*t*) in the forecast beginning on the indicated date. The forecast can be displayed as a table directly on the screen for immediate analysis or output as a serialized JSON to use in conjunction with a visualization tool.
 
@@ -91,7 +91,7 @@ The model outputs the following metrics for each month (*t*) in the forecast beg
 | 15.  | Gross Revenue       | $45,200.00   | grossRevenue              |
 | 16.  | Net Revenue         | $17,417.95   | netRevenue                |
 
-## Configuration
+## 3. Configuration
 
 The following is a serialized configuration file containing the default values for all coefficients.
 
@@ -112,14 +112,14 @@ The following is a serialized configuration file containing the default values f
 ```
 **Example 1:** Default configuration file
 
-## Console Output
+## 4. Console Output
 
 Below is a sample of the forecast displayed as a table. Plans for the utility include the development of a visualization tool and export functions to multiple files and formats, including TXT, CSV, Excel, HTML, and PDF.
 
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
 **Picture 1:** Sample Console Output.
 
-## Forecasts
+## 5. Forecasts
 
 The Team will use the following forecasts during our final presentation, and also as supporting material towards fulfilling the requirements of the MIT certification.
 
