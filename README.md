@@ -61,9 +61,9 @@ The proposed model has 34 coefficients, all of which can be individually adjuste
 | 26.  | j1          | 0.39          | Basic plan subscribers                                           |
 | 27.  | j2          | 0.34          | Standard plan subscribers                                        |
 | 28.  | j3          | 0.27          | Premium plan subscribers                                         |
-| 29.  | v1          | 75.00         | Basic plan subcription cost                                      |
-| 30.  | v2          | 35.00         | Standard plan subcription cost                                   |
-| 31.  | v3          | 15.00         | Premium plan subcription cost                                    |
+| 29.  | v1          | 75.00         | Basic plan subscription cost                                      |
+| 30.  | v2          | 35.00         | Standard plan subscription cost                                   |
+| 31.  | v3          | 15.00         | Premium plan subscription cost                                    |
 | 32.  | year        | 2026          | Forecast initial year                                            |
 | 33.  | month       | 1             | Forecast initial month                                           |
 | 34.  | day         | 1             | Forecast initial day                                             |
