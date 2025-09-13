@@ -70,7 +70,7 @@ The proposed model has 34 coefficients, all of which can be individually adjuste
 
 ## 2. Metrics
 
-The model outputs the following metrics for each month (*t*) in the forecast beginning on the indicated date. The forecast can be displayed as a table directly on the screen for immediate analysis or output as a serialized JSON to use in conjunction with a visualization tool.
+The model outputs the following metrics for each month (*t*) in the forecast beginning on the indicated date. The forecast can be displayed as a table directly on the screen for immediate analysis or output as a JSON-serialized Object to use in conjunction with a visualization tool.
 
 | No.  | Metric              | Sample Value | Variable Name             |
 | ---: | :---                | ---:         | :---                      |
