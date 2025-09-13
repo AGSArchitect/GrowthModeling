@@ -123,15 +123,17 @@ Below is a sample of the forecast displayed as a table. Plans for the utility in
 
 The Team will use the following forecasts during our final presentation, and also as supporting material towards fulfilling the requirements of the MIT certification.
 
-| No.  | (*K*)   | (*N*) | (*r*)  | (*d*)   | (*t*) | Forecast |
-| ---: | :---    | :---  | :---   | :---    | :---  | :---     |
-| 1.   | 3500000 | 1000  | `0.05` | `0.013` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.pdf) |
-| 2.   | 3500000 | 1000  | `0.06` | `0.013` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.pdf) |
-| 3.   | 3500000 | 1000  | `0.07` | `0.015` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.pdf) |
-| 4.   | 3500000 | 1000  | `0.07` | `0.020` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
-| 5.   | 3500000 | 1000  | `0.17` | `0.030` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
+| No.  | (*K*)   | (*N*) | (*r*)  | (*d*)   | (*t*) | Created    | Forecast |
+| ---: | :---    | :---  | :---   | :---    | :---  | :---       | :---     |
+| 1.   | 3500000 | 1000  | `0.05` | `0.013` | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.pdf) |
+| 2.   | 3500000 | 1000  | `0.06` | `0.013` | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.pdf) |
+| 3.   | 3500000 | 1000  | `0.07` | `0.015` | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.pdf) |
+| 4.   | 3500000 | 1000  | `0.07` | `0.020` | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
+| 5.   | 3500000 | 1000  | `0.17` | `0.030` | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
 
 **Note:** In addition, we are currently reviewing a forecast of (*K*) 3500000, (*N*) 1000, (*r*) 0.07, and (*d*) 0.0231, which converges exactly with the carrying capacity at time (*t*) 180.
+
+&nbsp; &nbsp; &nbsp; Mens et Manus
 
 ## The Team
 
