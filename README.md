@@ -117,7 +117,7 @@ The following is a serialized configuration file containing the default values f
 Below is a sample of the forecast displayed as a table. Plans for the utility include the development of a visualization tool and export functions to multiple files and formats, including TXT, CSV, Excel, HTML, and PDF.
 
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
-**Picture 1:** Sample Console Output.
+**Picture 1:** Sample of a forecast displayed in the output console.
 
 ## 5. Forecasts
 
