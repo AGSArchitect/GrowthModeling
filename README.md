@@ -114,7 +114,7 @@ The following is a JSON-serialized configuration file containing the default val
 
 ## 4. Console Output
 
-Below is a sample of the forecast displayed on the console as a table. It is also possible to create a JSON-serialized forecast to analyse the data using other tools. Plans for the utility include the development of a visualization component and export functions to multiple files and formats, including TXT, CSV, Excel, HTML, and PDF.
+Below is a sample of the forecast displayed on the console as a table. It is also possible to create a JSON-serialized forecast to analyse the data using other tools. Plans for the utility include developing a visualization component and export functions to multiple file formats, such as TXT, CSV, Excel, HTML, and PDF.
 
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
 **Picture 1:** Sample of a forecast displayed in the output console.
