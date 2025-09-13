@@ -1,7 +1,7 @@
 # The Logistic Growth Model
 The GrowthModeling repository contains a Java utility designed to estimate business growth based on various input conditions. The utility was developed by Group 2 (Cohort 20024) as part of the Professional Certificate Program in Product Management from the Massachusetts Institute of Technology (MIT).
 
-Using the Logistic Growth equation and a density-dependent decline term (also known as the Allee Effects equation), our Team has developed a system of differential equations that allow us to model multiple business-specific and topology-specific metrics such as the number of computing units based on processing requirements, computing cost, storage cost, archive cost, number of storage data IO operations, number of archive data IO operations, storage data IO operations cost, archive data IO operations cost, infrastructure cost, total carbon footprint, carbon footprint by infrastructure tier, gross revenue, net revenue, and per user cost, among other metrics.
+Using the Logistic Growth equation and a density-dependent decline term (also known as the Allee Effects equation), our Team has developed a system of differential equations that allow us to model multiple business-specific and topology-specific metrics such as the number of computing units based on processing requirements, computing cost, storage cost, archive cost, number of storage data IO operations, number of archive data IO operations, storage data IO operations cost, archive data IO operations cost, infrastructure cost, carbon footprint, gross revenue, net revenue, and per user cost, among other metrics.
 
 The main differential equation is as follows:
 
@@ -11,9 +11,11 @@ $$\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)-dN$$
 
 <br>
 
-The Team estimates the monthly computing utilization of CardioAI based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a maximum computing unit utilization rate (*u*) of 63%. The estimations are directly associated with the Amazon EC2 high-performance, GPU-accelerated `g6e.48xlarge` instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
+The Team estimates the monthly computing utilization of CardioAI based on 111.07 seconds of electrocardiogram (ECG) data processing per customer (*p*) and AI inference, with a desired maximum computing unit utilization rate (*u*) of 63%. The various coefficients are directly associated with the Amazon EC2 high-performance, GPU-accelerated `g6e.48xlarge` instance type. The instance is equipped with 1536 GiB of system memory and is powered by a 3rd Gen AMD EPYC 7R13 processor with 96 physical CPU cores, which translates to 192 vCPUs when leveraging a thread-per-core ratio of 2. Its accelerators consist of 8 NVIDIA L40S Tensor Core GPUs, each with 48 GB of memory, for a total of 384 GB of GPU memory. This configuration is specifically designed for high-performance generative AI, machine learning training, and spatial computing tasks.
 
-Data storage and archive costs are estimated based on compressed electrocardiographic files of 89 KB in size (*z*) and a bundle file containing 345 electrocardiogram files (*h*) for archive. The model accounts for multiple data storage replicas (*e1*) and archive replicas (*e2*) in addition to estimating the overall cost of data operations (*n1*, *n2*, *n3*) in S3 Standard and S3 Glacier Deep Archive. The carbon footprint is based on publicly available information from different sources and is strictly related to the estimated monthly emissions of the computing unit (*b1*), storage (*b2*), and archive (*b3*) services used. We are currently modeling a Basic, Standard, and Premium plan at different adoption rates (*j1*, *j2*, *j3*) and rates (*v1*, *v2*, *v3*). However, additional plans can be added at any time should it be necessary.
+Data storage and archive costs in S3 Standard and S3 Glacier Deep Archive are estimated based on compressed electrocardiogram files of 89 KB in size (*z*) or an archive file containing 345 electrocardiogram files (*h*), respectively. The model accounts for multiple data replicas (*e1*) and archive replicas (*e2*) in addition to estimating the overall cost of corresponding data operations (*n1*, *n2*, *n3*). The carbon footprint estimations are based on publicly available information from different sources. They are explicitly related to the estimated monthly CO<sub>2</sub> emissions of the computing unit (*b1*), storage (*b2*), and archive (*b3*) services.
+
+Lastly, we are currently modeling a Basic, Standard, and Premium plan at different adoption rates (*j1*, *j2*, *j3*) and price points (*v1*, *v2*, *v3*). However, additional plans can be added at any time should it be necessary.
 
 The differential equation to calculate revenue from subscription plans is as follows:
 
@@ -27,7 +29,7 @@ The utility has been written to achieve the intended functionality using multipl
 
 ## Coefficients
 
-The proposed model has 34 coefficients that can be adjusted to perform various business growth experiments, including defining multiple rate plans and modeling those simultaneously to analyze profitability under different growth conditions.
+The proposed model has 34 coefficients, all of which can be individually adjusted to create various business growth conditions. Some of the conditions can include using various computing units, adjusting the desired utilization, modifying the number of data replicas, or optimizing the cost of data operations.
 
 | No.  | Coefficient | Value         | Description                                                      |
 | ---: | ---:        | :---          | :---                                                             |
@@ -68,7 +70,7 @@ The proposed model has 34 coefficients that can be adjusted to perform various b
 
 ## Metrics
 
-The model generates the metrics below for each month (t) in the forecast beginning on the indicated date. xxx xxx xxx xxx xxx xxx xxx.
+The model outputs the following metrics for each month (*t*) in the forecast beginning on the indicated date. The forecast can be displayed as a table directly on the screen for immediate analysis or output as a serialized JSON to use in conjunction with a visualization tool.
 
 | No.  | Metric              | Sample Value | Variable Name             |
 | ---: | :---                | ---:         | :---                      |
@@ -91,7 +93,7 @@ The model generates the metrics below for each month (t) in the forecast beginni
 
 ## Configuration
 
-The following is a serialized configuration file containing the default values for all coefficients. xxx xxx xxx xxx xxx xxx xxx.
+The following is a serialized configuration file containing the default values for all coefficients.
 
 ```
 {
@@ -112,24 +114,24 @@ The following is a serialized configuration file containing the default values f
 
 ## Console Output
 
-xxx xxx xxx xxx xxx xxx xxx.
+Below is a sample of the forecast displayed as a table. Plans for the utility include the development of a visualization tool and export functions to multiple files and formats, including TXT, CSV, Excel, HTML, and PDF.
 
 ![Console Output](https://raw.githubusercontent.com/AGSArchitect/GrowthModeling/refs/heads/main/GrowthModeling/images/output.png "Console Output")
 **Picture 1:** Sample Console Output.
 
 ## Forecasts
 
-xxx xxx xxx xxx xxx xxx xxx.
+The Team will use the following forecasts during our final presentation, and also as supporting material towards fulfilling the requirements of the MIT certification.
 
-| No.  | (*K*)   | (*r*) | (*d*) | (*t*) | Forecast |
-| ---: | :---    | :---  | :---  | :---  | :---     |
-| 1.   | 3500000 | 0.05  | 0.013 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.pdf) |
-| 2.   | 3500000 | 0.06  | 0.013 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.pdf) |
-| 3.   | 3500000 | 0.07  | 0.015 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.pdf) |
-| 4.   | 3500000 | 0.07  | 0.020 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
-| 5.   | 3500000 | 0.17  | 0.030 | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
+| No.  | (*K*)   | (*N*) | (*r*)  | (*d*)   | (*t*) | Forecast |
+| ---: | :---    | :---  | :---   | :---    | :---  | :---     |
+| 1.   | 3500000 | 1000  | `0.05` | `0.013` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r05d013-t180.pdf) |
+| 2.   | 3500000 | 1000  | `0.06` | `0.013` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r06d013-t180.pdf) |
+| 3.   | 3500000 | 1000  | `0.07` | `0.015` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.html) &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d015-t180.pdf) |
+| 4.   | 3500000 | 1000  | `0.07` | `0.020` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
+| 5.   | 3500000 | 1000  | `0.17` | `0.030` | 180   | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
 
-xxx xxx xxx xxx xxx xxx xxx.
+**Note:** In addition, we are currently reviewing a forecast of (*K*) 3500000, (*N*) 1000, (*r*) 0.07, and (*d*) 0.0231, which converges exactly with the carrying capacity at time (*t*) 180.
 
 ## The Team
 
