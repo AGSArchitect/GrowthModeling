@@ -131,7 +131,7 @@ The Team will use the following forecasts during our final presentation, and als
 | 4.   | 3500000 | 1000  | `0.07` | `0.020` | 0.63  | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r07d02-t180.pdf)  |
 | 5.   | 3500000 | 1000  | `0.17` | `0.030` | 0.63  | 180   | 2025-09-12 | [HTML](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.html)  &nbsp; [PDF](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-r17d03-t180.pdf)  |
 
-**Note:** In addition, we are currently reviewing a forecast of (*K*) 3500000, (*N*) 1000, (*r*) 0.07, and (*d*) 0.0231, which converges exactly with the carrying capacity at time (*t*) 180.
+**Note:** The Team created a [visualization](https://cardioai.s3.us-east-2.amazonaws.com/K3500000-t180-customers.pdf) of the number of customers (*N*) for all of the above datasets. In addition, we are currently reviewing a forecast of (*K*) 3500000, (*N*) 1000, (*r*) 0.07, and (*d*) 0.0231, which converges exactly with the carrying capacity at time (*t*) 180.
 
 &nbsp; &nbsp; &nbsp; Mens et Manus
 
