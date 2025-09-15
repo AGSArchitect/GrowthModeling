@@ -147,3 +147,5 @@ The team members of the CardioAI Impact Project are listed below in alphabetical
 - Schenone, Maria
 
 > Ariel Gonzalez - Solutions Architect
+
+**Massachusetts Institute of Technology** | Professional Certificate Program in Product Management | 2024
